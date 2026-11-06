@@ -1,0 +1,86 @@
+diff --git a/web/index.html b/web/index.html
+index bda3447..050597a 100644
+--- a/web/index.html
++++ b/web/index.html
+@@ -5,9 +5,9 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Arachne · Minecraft map art maker and generator</title>
+     <meta name="description" content="Free Minecraft map art maker. Turn a picture into a Litematica or WorldEdit schematic with a palette priced for survival. It runs in your browser with no tracking." />
+-    <link rel="canonical" href="https://b8b7.live/arachne/" />
++    <link rel="canonical" href="https://sovalyecraft.space/map-art/" />
+     <meta property="og:type" content="website" />
+-    <meta property="og:url" content="https://b8b7.live/arachne/" />
++    <meta property="og:url" content="https://sovalyecraft.space/map-art/" />
+     <meta property="og:title" content="Arachne · Minecraft map art maker and generator" />
+     <meta property="og:description" content="Free Minecraft map art maker. Turn a picture into map art in your browser, with no account and no tracking." />
+     <meta property="og:image" content="https://b8b7.live/assets/brand/og-card.jpg" />
+@@ -21,7 +21,7 @@
+       "@context": "https://schema.org",
+       "@type": "WebApplication",
+       "name": "Arachne",
+-      "url": "https://b8b7.live/arachne/",
++      "url": "https://sovalyecraft.space/map-art/",
+       "description": "Free Minecraft map art maker. Turn a picture into a Litematica or WorldEdit schematic with a palette priced for survival. It runs in your browser with no tracking.",
+       "applicationCategory": "UtilitiesApplication",
+       "operatingSystem": "Any",
+@@ -35,7 +35,7 @@
+     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+     <link rel="manifest" href="/manifest.webmanifest" />
+-    <link rel="alternate" type="application/atom+xml" title="Arachne release notes" href="https://b8b7.live/arachne/feed.xml" />
++    <link rel="alternate" type="application/atom+xml" title="Arachne release notes" href="https://sovalyecraft.space/map-art/feed.xml" />
+     <meta name="theme-color" content="#16181d" />
+     <link rel="stylesheet" href="/src/style.css" />
+   </head>
+diff --git a/web/public/manifest.webmanifest b/web/public/manifest.webmanifest
+index f5c0695..2577d2b 100644
+--- a/web/public/manifest.webmanifest
++++ b/web/public/manifest.webmanifest
+@@ -2,16 +2,16 @@
+   "name": "Arachne",
+   "short_name": "Arachne",
+   "description": "Free Minecraft map art maker. Turn a picture into map art in your browser, with no account and no tracking.",
+-  "start_url": "/arachne/",
+-  "scope": "/arachne/",
++  "start_url": "/map-art/",
++  "scope": "/map-art/",
+   "display": "standalone",
+   "background_color": "#16181d",
+   "theme_color": "#16181d",
+   "icons": [
+-    { "src": "/arachne/icon-192.png", "sizes": "192x192", "type": "image/png" },
+-    { "src": "/arachne/icon-512.png", "sizes": "512x512", "type": "image/png" },
++    { "src": "/map-art/icon-192.png", "sizes": "192x192", "type": "image/png" },
++    { "src": "/map-art/icon-512.png", "sizes": "512x512", "type": "image/png" },
+     {
+-      "src": "/arachne/icon-maskable-512.png",
++      "src": "/map-art/icon-maskable-512.png",
+       "sizes": "512x512",
+       "type": "image/png",
+       "purpose": "maskable"
+diff --git a/web/tools/lib.js b/web/tools/lib.js
+index a59833a..15ad133 100644
+--- a/web/tools/lib.js
++++ b/web/tools/lib.js
+@@ -1,7 +1,7 @@
+ import { readFileSync } from "node:fs";
+ import { basename } from "node:path";
+ 
+-export const SITE = "https://b8b7.live/arachne/";
++export const SITE = "https://sovalyecraft.space/map-art/";
+ export const OG_IMAGE = "https://b8b7.live/assets/brand/og-card.jpg";
+ export const OG_ALT = "A rolled Minecraft map sealed with a spider medallion";
+ export const THEME_COLOR = "#16181d";
+diff --git a/web/vite.config.ts b/web/vite.config.ts
+index 241114d..4aaa863 100644
+--- a/web/vite.config.ts
++++ b/web/vite.config.ts
+@@ -12,7 +12,7 @@ function buildId(): string {
+ }
+ 
+ export default defineConfig(({ command }) => ({
+-  base: command === "build" ? "/arachne/" : "/",
++  base: command === "build" ? "/map-art/" : "/",
+   appType: "mpa",
+   build: {
+     target: "es2022",

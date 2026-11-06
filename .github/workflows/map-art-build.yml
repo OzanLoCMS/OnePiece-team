@@ -1,0 +1,136 @@
+name: map-art-build
+
+# Arachne'yi sabit commit'ten derler ve map-art.zip artifact'i üretir.
+# Bu workflow DEPLOY ETMEZ: yalnızca derler, test eder ve zip'i yükler.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/map-art-build.yml"
+      - "map-art-build/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: map-art-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Site deposunu çek
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Sabit Arachne commit'ini oku
+        id: pin
+        run: |
+          sha="$(tr -d '[:space:]' < map-art-build/ARACHNE-COMMIT)"
+          [[ "$sha" =~ ^[0-9a-f]{40}$ ]] || { echo "ARACHNE-COMMIT geçerli bir 40 haneli SHA değil"; exit 1; }
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Arachne'yi sabit commit'ten çek
+        uses: actions/checkout@v4
+        with:
+          repository: b8b7lives/arachne
+          ref: ${{ steps.pin.outputs.sha }}
+          path: arachne
+          persist-credentials: false
+
+      - name: Çekilen commit'i doğrula
+        run: |
+          test "$(git -C arachne rev-parse HEAD)" = "${{ steps.pin.outputs.sha }}"
+
+      - name: Rust 1.97.1 + wasm32 hedefi
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: 1.97.1
+          target: wasm32-unknown-unknown
+          components: clippy, rustfmt
+          cache-workspaces: arachne
+
+      - name: Rust sürümü Arachne'nin istediğiyle aynı mı
+        working-directory: arachne
+        run: |
+          want="$(sed -n 's/^channel *= *"\(.*\)"/\1/p' rust-toolchain.toml)"
+          have="$(rustc --version | cut -d' ' -f2)"
+          echo "istenen=$want kurulu=$have"
+          test "$want" = "$have"
+          rustup target list --installed | grep -x wasm32-unknown-unknown
+
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: arachne/web/.nvmrc
+          cache: npm
+          cache-dependency-path: arachne/web/package-lock.json
+
+      - name: Bağımlılıklar (npm ci)
+        working-directory: arachne/web
+        run: npm ci
+
+      - name: Arachne motor testleri (cargo test)
+        working-directory: arachne
+        run: cargo test --workspace
+
+      - name: Arachne biome kontrolü (yamasız kaynak)
+        working-directory: arachne/web
+        run: npx biome ci .
+
+      - name: Yamayı uygula (/arachne/ -> /map-art/)
+        run: |
+          for p in map-art-build/patches/*.patch; do
+            git -C arachne apply --check "../$p"
+            git -C arachne apply "../$p"
+          done
+          git -C arachne -c user.name=ci -c user.email=ci@example.invalid commit -qam "sovalyecraft: map-art yolu"
+          test -z "$(git -C arachne status --porcelain)"
+
+      - name: Derle (wasm + veri + sayfalar + tsc + vite)
+        working-directory: arachne/web
+        run: npm run build
+
+      - name: Çıktıyı doğrula
+        working-directory: arachne/web
+        run: |
+          test -f dist/index.html
+          ls dist/assets/*.wasm
+          grep -q '/map-art/assets/' dist/index.html
+          if grep -n '"/arachne/' dist/index.html dist/manifest.webmanifest dist/sw.js; then
+            echo "Hâlâ /arachne/ yolu var"; exit 1
+          fi
+
+      - name: Kaynak arşivi + lisans (GPL-3.0)
+        run: |
+          id="$(git -C arachne rev-parse --short HEAD)"
+          mkdir -p arachne/web/dist/source
+          git -C arachne archive --format=tar.gz --prefix="arachne-$id/" \
+            -o "$PWD/arachne/web/dist/source/arachne-$id.tar.gz" HEAD
+          cp arachne/LICENSE arachne/web/dist/LICENSE-GPL-3.0.txt
+          cp map-art-build/NOTICE.md arachne/web/dist/NOTICE.txt
+          cp map-art-build/patches/*.patch arachne/web/dist/source/
+
+      - name: Dosya boyutu sınırı (Cloudflare Pages dosya başına 25 MiB)
+        working-directory: arachne/web
+        run: |
+          big="$(find dist -type f -size +24M)"
+          if [ -n "$big" ]; then echo "Çok büyük dosyalar:"; echo "$big"; exit 1; fi
+          du -sh dist
+
+      - name: map-art.zip oluştur
+        run: |
+          mv arachne/web/dist map-art
+          zip -qr map-art.zip map-art
+          ls -lh map-art.zip
+
+      - name: Artifact yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: map-art-${{ steps.pin.outputs.sha }}
+          path: map-art.zip
+          if-no-files-found: error
+          retention-days: 14

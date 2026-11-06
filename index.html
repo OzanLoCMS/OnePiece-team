@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OnePiece — Minecraft ekibi</title>
+<meta name="description" content="OnePiece Minecraft ekibi: kurucular, topluluk ve Discord.">
+<meta name="theme-color" content="#07090A">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.classList.add("js");window.SV_SRC="assets/skinview3d.bundle.js"</script>
+<link rel="preload" href="assets/fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#ekip">İçeriğe geç</a>
+<header class="top">
+  <a class="brand" href="#top" aria-label="OnePiece, başa dön"><img id="logo" src="assets/logo.png" width="61" height="34" alt="OnePiece"></a>
+  <button class="menu" id="mb" aria-expanded="false" aria-controls="nav" aria-label="Menüyü aç"><span></span><span></span></button>
+</header>
+<nav id="nav" inert aria-label="Ana menü">
+  <a href="#ekip">Ekip</a>
+  <a href="#galeri">Galeri</a>
+  <a href="#discord">Discord</a>
+</nav>
+
+<main>
+<section class="hero" id="top">
+  <div class="meta" aria-hidden="true"><span>MİNECRAFT EKİBİ</span><span id="count"></span></div>
+  <div class="hero-back" lang="en" aria-hidden="true" data-b="type" data-s="55" data-d="80"><span class="one">One</span><span class="piece">Piece</span></div>
+  <div class="stage">
+    <div class="vp">
+      <div class="glows" id="glows" aria-hidden="true"></div>
+      <canvas id="scene" tabindex="0" role="img" aria-label="Üç Minecraft karakteri: solda OzanLo8615, ortada croxy41, sağda _Tuna0_. Karakterin üzerine gelince parlar; yatay sürükleyerek veya yön tuşlarıyla döndürebilirsin."></canvas>
+      <div class="fallback" id="fallback" hidden></div>
+    </div>
+    <div class="tags" id="tags"></div>
+  </div>
+  <div class="hero-foot">
+    <p class="lead" id="lead" data-b="rise" data-d="900"></p>
+    <div class="actions" data-b="rise" data-d="1050">
+      <a class="cta solid" id="dcHero" href="#discord" target="_blank" rel="noopener noreferrer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"></svg>Discord’a katıl</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ekip">
+  <div class="sh"><h2 data-b="type" data-s="50">Ekip</h2><i class="rule" data-b="line"></i></div>
+  <ol class="members" id="members"></ol>
+</section>
+
+<section class="sec" id="galeri">
+  <div class="sh"><h2 data-b="type" data-s="55">Anılar</h2><span class="lbl">GALERİ</span><i class="rule" data-b="line"></i></div>
+  <div id="gal"></div>
+</section>
+
+<section class="dc" id="discord">
+  <i class="rule" data-b="line"></i>
+  <h2 data-b="words" data-s="150">Discord sunucusuna <span class="gr">katıl</span></h2>
+  <p data-b="rise" data-d="300">Duyurular, sohbet ve oyun arkadaşları Discord sunucusunda.</p>
+  <a class="cta solid big" id="dcMain" href="#" target="_blank" rel="noopener noreferrer" data-b="rise" data-d="450"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"></svg>Sunucuya gir</a>
+</section>
+</main>
+
+<footer>
+  <div class="credit" id="credit" data-b="type" data-s="24">DESIGNED &amp; DEVELOPED BY OzanLo8615</div>
+  <a class="flink" id="dcFoot" href="#" target="_blank" rel="noopener noreferrer">Discord</a>
+</footer>
+
+<dialog id="lb" aria-label="Görsel önizleme"><button class="x" id="lbx" aria-label="Kapat">×</button><img id="lbi" alt=""></dialog>
+<noscript><p style="padding:24px">Bu sayfa JavaScript gerektirir.</p></noscript>
+<script src="js/icons.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+ "teamName": "OnePiece",
+ "tagline": "Minecraft ekibi",
+ "description": "OnePiece, kurucuları croxy41 ve _Tuna0_ olan Minecraft ekibi.",
+ "logo": "assets/logo.png",
+ "discordUrl": "https://discord.gg/pTTUwutKYB",
+ "credit": "DESIGNED & DEVELOPED BY OzanLo8615",
+ "members": [
+  {
+   "slug": "ozanlo8615",
+   "username": "OzanLo8615",
+   "role": "TOST MAKİNELİ YAZILIMCI",
+   "skin": "assets/skins/ozan.png",
+   "model": "default",
+   "socials": {}
+  },
+  {
+   "slug": "croxy41",
+   "username": "croxy41",
+   "role": "EKİP KURUCUSU",
+   "featured": true,
+   "uuid": "68d82329-8e4b-4bdb-a997-8be64f0f4ca8",
+   "skin": "assets/skins/croxy41.png",
+   "model": "default",
+   "socials": {
+    "kick": "https://kick.com/croxy-41"
+   }
+  },
+  {
+   "slug": "tuna0",
+   "username": "_Tuna0_",
+   "role": "KURUCU",
+   "skin": "assets/skins/tuna.png",
+   "model": "default",
+   "socials": {
+    "instagram": "https://www.instagram.com/mc_tuna0/",
+    "kick": "https://kick.com/mctuna0",
+    "youtube": "https://www.youtube.com/channel/UCjDlHkkOObNRNYKKEq20sFw"
+   }
+  }
+ ],
+ "gallery": []
+}
