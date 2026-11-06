@@ -1,7 +1,7 @@
 diff --git a/web/src/sw.ts b/web/src/sw.ts
 --- a/web/src/sw.ts
 +++ b/web/src/sw.ts
-@@ -11,7 +11,7 @@
+@@ -11,6 +11,6 @@
    event.waitUntil(
      caches
        .keys()
