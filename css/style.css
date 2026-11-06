@@ -138,3 +138,19 @@ footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:w
 .gal button:nth-child(4n+1){grid-column:span 7}.gal button:nth-child(4n+2){grid-column:span 3}.gal button:nth-child(4n+3){grid-column:span 4}.gal button:nth-child(4n+4){grid-column:span 8}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:1ms!important}html{scroll-behavior:auto}}
+
+
+/* Map Art */
+.mapart{position:relative;margin-top:88px;padding:48px 0 56px}
+.mapart .sh{padding-bottom:16px}
+.mapart .sh .rule{background:var(--g)}
+.mapart .sh h2{font-size:clamp(60px,17vw,210px)}
+.mapart-body{display:grid;gap:26px;padding:26px var(--pad) 0}
+.mapart-index{font:400 10px/1.4 var(--mono);letter-spacing:.14em;color:var(--g)}
+.mapart-body p{max-width:38ch;color:var(--dim);margin-top:12px}
+.mapart-body .cta{width:100%;justify-content:space-between}
+.mapart-body .cta span{font:400 24px var(--mono);color:var(--g)}
+@media(min-width:768px){
+  .mapart-body{grid-template-columns:1fr auto;align-items:end;gap:40px}
+  .mapart-body .cta{width:auto;min-width:240px}
+}

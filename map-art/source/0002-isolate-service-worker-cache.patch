@@ -1,0 +1,11 @@
+diff --git a/web/src/sw.ts b/web/src/sw.ts
+--- a/web/src/sw.ts
++++ b/web/src/sw.ts
+@@ -11,6 +11,6 @@
+   event.waitUntil(
+     caches
+       .keys()
+-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))),
++      .then((keys) => Promise.all(keys.filter((k) => k.startsWith("arachne-") && k !== CACHE).map((k) => caches.delete(k)))),
+   );
+ });

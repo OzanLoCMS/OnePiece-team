@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arachne release notes</title>
+    <meta name="description" content="What changed in each published build of Arachne, the Minecraft map art maker, newest first." />
+    <link rel="canonical" href="https://sovalyecraft.space/map-art/changelog/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sovalyecraft.space/map-art/changelog/" />
+    <meta property="og:title" content="Arachne release notes" />
+    <meta property="og:description" content="What changed in each published build of Arachne, the Minecraft map art maker, newest first." />
+    <meta property="og:image" content="https://b8b7.live/assets/brand/og-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A rolled Minecraft map sealed with a spider medallion" />
+    <meta property="og:site_name" content="b8b7.live" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Arachne release notes","url":"https://sovalyecraft.space/map-art/changelog/","isPartOf":{"@type":"WebApplication","name":"Arachne","url":"https://sovalyecraft.space/map-art/"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Arachne","item":"https://sovalyecraft.space/map-art/"},{"@type":"ListItem","position":2,"name":"Arachne release notes","item":"https://sovalyecraft.space/map-art/changelog/"}]}}</script>
+    <link rel="icon" href="/map-art/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/map-art/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/map-art/apple-touch-icon.png" />
+    <link rel="alternate" type="application/atom+xml" title="Arachne release notes" href="https://sovalyecraft.space/map-art/feed.xml" />
+    <meta name="theme-color" content="#16181d" />
+    <link rel="stylesheet" crossorigin href="/map-art/assets/site-CqNgt-I1.css">
+  </head>
+  <body class="page">
+    <header class="site-head">
+      <a class="site-name" href="../">Arachne</a>
+      <span class="site-tag">Minecraft map art maker</span>
+      <nav class="site-nav"><a href="../faq/">FAQ</a><a href="../colors/">colors</a><a href="../fonts/">fonts</a><a href="../changelog/">release notes</a></nav>
+    </header>
+    <main class="page-main">
+<h1>Arachne release notes</h1>
+<p class="lede">Every published build, newest first. The same notes go out on the <a href="https://sovalyecraft.space/map-art/feed.xml">Atom feed</a> and in the Discord announcements channel.</p>
+<article class="release" id="2026-09-08-faq-pictures">
+<h2><a href="#2026-09-08-faq-pictures">images on the FAQ page</a></h2>
+<p class="date"><time datetime="2026-09-08">2026-09-08</time></p>
+<ul><li>Supporting images added to the FAQ page.</li></ul>
+</article>
+<article class="release" id="2026-09-07-text-fonts-map-data">
+<h2><a href="#2026-09-07-text-fonts-map-data">text on the map with 142 free fonts, and a map data mode that skips the build</a></h2>
+<p class="date"><time datetime="2026-09-07">2026-09-07</time></p>
+<ul><li>You can put text on your map, with or without a picture behind it. Turn on text on the map in Source, type a line, and drag it into place on the preview. Under 20 blocks tall the letters are drawn crisp, one solid map color with hard edges, which is what reads at sign size. From 20 blocks up they are drawn smooth and dithered like the picture. Letter style overrides that either way, and its third choice, hinted, is for 8 to 19 blocks. The text tool needs Safari 17 or newer, the same floor as loading a picture.</li><li>A text line can carry an outline, a shadow, an underline, and on smooth letters a two color gradient. It can be turned a quarter or half turn, mirrored, flipped, or stacked one letter per row. An ink slider on crisp letters counts more or less of a letter's soft edge as a block, useful on thin fonts at small sizes. Undo and redo sit in the head with the usual keys, and the arrow keys nudge the selected line a block at a time. Text saves with your settings and never rides along in a shared palette link.</li><li>The text tool comes with 142 free font families, listed with samples, designers and licenses on a new page at /arachne/fonts/. Every font is hosted here rather than loaded from Google Fonts, so using one sends no request off the site.</li><li>A new select at the top of Source, make, chooses between a build schematic and map.dat files. In map.dat mode Arachne writes the map data files only, always zipped, and nothing is placed, so every map color is available in all four shades. More on where the files go and how to give yourself the map is on the FAQ page.</li><li>Map data files for 26.1 and later worlds came up blank in game. They now go where those versions look for them.</li><li>Settings read more plainly. Every setting sits on one row with its help text, and dropdown options are one term each with the explanation in the tooltip. The About panel links GitHub, Modrinth, CurseForge, Ko-fi and Discord, and the what's new panel is gone since the release notes are in the top nav.</li></ul>
+</article>
+<article class="release" id="2026-09-04-faq-header-water">
+<h2><a href="#2026-09-04-faq-header-water">a questions and answers page, page links in the header, and water leaves the palette</a></h2>
+<p class="date"><time datetime="2026-09-04">2026-09-04</time></p>
+<ul><li>A new page at /arachne/faq/ answers the questions people ask before and after a first build, from how a map shades its blocks to which file to download. The header of the app now links it along with the map colors and these release notes, so the pages are no longer only in the footer.</li><li>Water is no longer offered. The game shades water by its depth, which Arachne did not model, so no plan it made for water was right in game, and no one builds map art with it. Its map color leaves the colors page as well, which now lists the sixty colors Arachne builds with.</li><li>The survival default palette preset was every color minus water and is now the same as every color, so it is gone.</li></ul>
+</article>
+<article class="release" id="2026-09-03-litematic-colors-changelog">
+<h2><a href="#2026-09-03-litematic-colors-changelog">schematics download as .litematic, every map color has a page, cherry leaves are pink again, and these notes have their own address</a></h2>
+<p class="date"><time datetime="2026-09-03">2026-09-03</time></p>
+<ul><li>Schematics download as .litematic files now, which is Litematica's own format. Each file carries its name, so it shows under that name in Litematica's list, and its description says it came from Arachne. If you want the vanilla structure .nbt instead, which WorldEdit also reads, pick it in the schematic select under download.</li><li>A new page at /arachne/colors/ lists all 61 map colors with their three shades and every block Arachne offers for each, with the same flags the app uses. It is handy for planning a palette away from the app or for sharing a block list with a friend.</li><li>These release notes have a page of their own at /arachne/changelog/, and the feed carries the same entries.</li><li>Cherry leaves and pale oak leaves showed green in the block pictures. The picture tints now follow the game's own rules, so leaves that carry no tint show their real color, and tinted blocks such as grass and water use the game's default colors.</li><li>A few smaller things landed too. The app calls itself a map art maker, dim text is a touch brighter, keyboard users get a skip link straight to the controls, the installed app icon fits every phone's icon shape, and the block picture sheet is about half the size it was.</li></ul>
+</article>
+<article class="release" id="2026-08-28-build-modes">
+<h2><a href="#2026-08-28-build-modes">separate panels start on the ground, and you pick how the build is cut next to max height</a></h2>
+<p class="date"><time datetime="2026-08-28">2026-08-28</time></p>
+<ul><li>Separate panels used to inherit the heights of the whole picture, so a panel from the bottom half of a tall picture could float far above the ground with nothing under it. Every panel now starts on the ground with its own reference row, and max height measures the tallest panel. Colors are unchanged: the shade of every block comes from its height against the block north of it, and that never moves.</li><li>The two download checkboxes are now one setting under height called build as: separate panels, panels that continue each other, or one piece. It sits next to max height because it changes what max height measures. Panels that continue each other share heights, so the build sheet reminds you to paste every panel at the same Y.</li><li>A panel with nothing to place, such as a fully see-through corner of the picture, gets no schematic file. The download section says which panels were left out.</li></ul>
+</article>
+<article class="release" id="2026-08-28-mending-note">
+<h2><a href="#2026-08-28-mending-note">a shorter tools checklist</a></h2>
+<p class="date"><time datetime="2026-08-28">2026-08-28</time></p>
+<ul><li>Tools with Mending no longer carry a repair note in the Summary checklist. The same line was repeating under every mending tool and you already know what Mending does. Nothing else changed.</li></ul>
+</article>
+<article class="release" id="2026-08-27-phones-and-filler">
+<h2><a href="#2026-08-27-phones-and-filler">works on phones and tablets, installs as an app, shares straight to Discord, and filler is only ever what a block needs</a></h2>
+<p class="date"><time datetime="2026-08-27">2026-08-27</time></p>
+<ul><li>Arachne now fits a phone. Panels stack, controls are sized for thumbs, the palette and materials lists read as cards, and a bar at the bottom jumps between Source, Palette, Summary and Download. Turn on explain controls near the top and every setting shows its help text under it, with a legend above the palette. On a phone a share button next to download hands the file to Discord, mail or whatever app you use. Nothing changed on desktop.</li><li>You can add Arachne to your home screen. It opens like an app and keeps working offline after the first visit. Updates arrive on their own the next time you open it with a connection. If it looks stale, close it and open it again.</li><li>The palette never picks for you. The heading now says which preset is in play and an empty palette says so too. New preset b8b7's choice, the blocks I build with (which of course are the best and not picked arbitrarily).</li><li>Filler blocks are placed only where a block would fall or pop off without one, plus the noobline. The old survival placement option added tall pillars under every step so that each block had a face to click against. Material lists are shorter for staircased builds as a result.</li></ul>
+</article>
+<article class="release" id="2026-08-16-height-and-dither">
+<h2><a href="#2026-08-16-height-and-dither">a max height cap, a dither picker with live samples, and a smaller download</a></h2>
+<p class="date"><time datetime="2026-08-16">2026-08-16</time></p>
+<ul><li>You can cap how tall the staircased build stands. Arachne reports how tall the picture wants to be, recolors the fewest blocks it can to fit under your cap, and tells you what the squeeze costs in picture accuracy. Most pictures give up very little: a sky that wants to climb 100 blocks usually fits under 20 for a few percent.</li><li>The dither menu is a real picker now. Every mode shows a live sample made from your own enabled palette, so you can see the difference between smooth diffusion, grid mixing, and film grain before choosing. A new mode, Yliluoma blue noise, holds color like the 4×4 mix and reads like film grain.</li><li>The preview panel grew tidy controls, and view the build now sits right under the preview as well as next to download.</li><li>Material lists for standalone panels now include the reference row the panel stands on. Earlier lists ran up to 128 filler blocks short per panel; side by side builds were always correct.</li><li>The app is about 20 KB smaller to download. Big photos no longer strain memory, and imported settings save the moment they load.</li><li>Height modes are named the way players say them: staircased (3D) and flat (2D).</li></ul>
+</article>
+<article class="release" id="2026-08-14-blossom">
+<h2><a href="#2026-08-14-blossom">a Communities section, starting with BlossomCraft</a></h2>
+<p class="date"><time datetime="2026-08-14">2026-08-14</time></p>
+<ul><li>The About panel has a Communities section now. First resident: BlossomCraft, where I play and build my map art. If you enjoy map art, come build with us at blossomcraft.org.</li></ul>
+</article>
+<article class="release" id="2026-08-14-community">
+<h2><a href="#2026-08-14-community">the community server opens, and release notes get a feed</a></h2>
+<p class="date"><time datetime="2026-08-14">2026-08-14</time></p>
+<ul><li>Arachne has a community Discord now. The invite lives at b8b7.live/discord, and the About panel links it. Show off what you built or come ask questions.</li><li>Release notes are also a feed now, at b8b7.live/arachne/feed.xml. Any feed reader can follow along.</li><li>Search engines and link previews now get proper metadata: a page title, a description, and a preview card. These are static tags in the page itself, not code. They collect nothing, and the no-tracking stance is unchanged.</li></ul>
+</article>
+<article class="release" id="2026-08-14-filler">
+<h2><a href="#2026-08-14-filler">filler counts in your materials list, a proper filler picker, and this changelog</a></h2>
+<p class="date"><time datetime="2026-08-14">2026-08-14</time></p>
+<ul><li>The Summary and the build sheet count filler as its own row, for the whole build or one panel, so what you farm matches what you place.</li><li>Filler moved to its own section in Source, with a searchable picker that shows sprites, lists your palette's blocks first, and only offers blocks that actually work as filler.</li><li>The picker follows the game version you export for. A filler pick that version does not have is flagged, and the export waits until you fix it.</li><li>The header grew an About panel with quick links, a spider favicon, and this what's new panel. Updates land here; nothing about your visit is tracked.</li></ul>
+</article>
+<article class="release" id="2026-08-13-beta">
+<h2><a href="#2026-08-13-beta">the beta opens</a></h2>
+<p class="date"><time datetime="2026-08-13">2026-08-13</time></p>
+<ul><li>Public beta at b8b7.live/arachne, source on GitHub.</li><li>Transparency handling verified against a real in-game build.</li></ul>
+</article>
+    </main>
+    <footer class="site-foot">
+      <p><a href="../">Open Arachne</a> · <a href="https://sovalyecraft.space/map-art/feed.xml">release notes feed</a> · <a href="https://b8b7.live/">b8b7.live</a></p>
+      <p><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GPL-3.0</a> · questions and bug reports go to <a href="mailto:arachne@b8b7.live">arachne@b8b7.live</a></p>
+      <p class="legal">Minecraft block textures and block data are the property of Mojang. This project is independent and has no connection to Mojang or Microsoft.</p>
+    </footer>
+  </body>
+</html>

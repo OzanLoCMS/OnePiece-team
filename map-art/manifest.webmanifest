@@ -1,0 +1,20 @@
+{
+  "name": "Arachne",
+  "short_name": "Arachne",
+  "description": "Free Minecraft map art maker. Turn a picture into map art in your browser, with no account and no tracking.",
+  "start_url": "/map-art/",
+  "scope": "/map-art/",
+  "display": "standalone",
+  "background_color": "#16181d",
+  "theme_color": "#16181d",
+  "icons": [
+    { "src": "/map-art/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/map-art/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    {
+      "src": "/map-art/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

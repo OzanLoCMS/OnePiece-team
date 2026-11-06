@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Arachne release notes</title>
+  <subtitle>What changed in each published build of Arachne, the Minecraft map art maker.</subtitle>
+  <id>https://sovalyecraft.space/map-art/</id>
+  <link href="https://sovalyecraft.space/map-art/"/>
+  <link rel="self" href="https://sovalyecraft.space/map-art/feed.xml"/>
+  <updated>2026-09-08T00:00:00Z</updated>
+  <author><name>b8b7</name></author>
+  <entry>
+    <title>images on the FAQ page</title>
+    <id>tag:b8b7.live,2026:arachne:2026-09-08-faq-pictures</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-09-08T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;images on the FAQ page&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Supporting images added to the FAQ page.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>text on the map with 142 free fonts, and a map data mode that skips the build</title>
+    <id>tag:b8b7.live,2026:arachne:2026-09-07-text-fonts-map-data</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-09-07T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;text on the map with 142 free fonts, and a map data mode that skips the build&lt;/p&gt;&lt;ul&gt;&lt;li&gt;You can put text on your map, with or without a picture behind it. Turn on text on the map in Source, type a line, and drag it into place on the preview. Under 20 blocks tall the letters are drawn crisp, one solid map color with hard edges, which is what reads at sign size. From 20 blocks up they are drawn smooth and dithered like the picture. Letter style overrides that either way, and its third choice, hinted, is for 8 to 19 blocks. The text tool needs Safari 17 or newer, the same floor as loading a picture.&lt;/li&gt;&lt;li&gt;A text line can carry an outline, a shadow, an underline, and on smooth letters a two color gradient. It can be turned a quarter or half turn, mirrored, flipped, or stacked one letter per row. An ink slider on crisp letters counts more or less of a letter's soft edge as a block, useful on thin fonts at small sizes. Undo and redo sit in the head with the usual keys, and the arrow keys nudge the selected line a block at a time. Text saves with your settings and never rides along in a shared palette link.&lt;/li&gt;&lt;li&gt;The text tool comes with 142 free font families, listed with samples, designers and licenses on a new page at /arachne/fonts/. Every font is hosted here rather than loaded from Google Fonts, so using one sends no request off the site.&lt;/li&gt;&lt;li&gt;A new select at the top of Source, make, chooses between a build schematic and map.dat files. In map.dat mode Arachne writes the map data files only, always zipped, and nothing is placed, so every map color is available in all four shades. More on where the files go and how to give yourself the map is on the FAQ page.&lt;/li&gt;&lt;li&gt;Map data files for 26.1 and later worlds came up blank in game. They now go where those versions look for them.&lt;/li&gt;&lt;li&gt;Settings read more plainly. Every setting sits on one row with its help text, and dropdown options are one term each with the explanation in the tooltip. The About panel links GitHub, Modrinth, CurseForge, Ko-fi and Discord, and the what's new panel is gone since the release notes are in the top nav.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>a questions and answers page, page links in the header, and water leaves the palette</title>
+    <id>tag:b8b7.live,2026:arachne:2026-09-04-faq-header-water</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-09-04T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;a questions and answers page, page links in the header, and water leaves the palette&lt;/p&gt;&lt;ul&gt;&lt;li&gt;A new page at /arachne/faq/ answers the questions people ask before and after a first build, from how a map shades its blocks to which file to download. The header of the app now links it along with the map colors and these release notes, so the pages are no longer only in the footer.&lt;/li&gt;&lt;li&gt;Water is no longer offered. The game shades water by its depth, which Arachne did not model, so no plan it made for water was right in game, and no one builds map art with it. Its map color leaves the colors page as well, which now lists the sixty colors Arachne builds with.&lt;/li&gt;&lt;li&gt;The survival default palette preset was every color minus water and is now the same as every color, so it is gone.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>schematics download as .litematic, every map color has a page, cherry leaves are pink again, and these notes have their own address</title>
+    <id>tag:b8b7.live,2026:arachne:2026-09-03-litematic-colors-changelog</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-09-03T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;schematics download as .litematic, every map color has a page, cherry leaves are pink again, and these notes have their own address&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Schematics download as .litematic files now, which is Litematica's own format. Each file carries its name, so it shows under that name in Litematica's list, and its description says it came from Arachne. If you want the vanilla structure .nbt instead, which WorldEdit also reads, pick it in the schematic select under download.&lt;/li&gt;&lt;li&gt;A new page at /arachne/colors/ lists all 61 map colors with their three shades and every block Arachne offers for each, with the same flags the app uses. It is handy for planning a palette away from the app or for sharing a block list with a friend.&lt;/li&gt;&lt;li&gt;These release notes have a page of their own at /arachne/changelog/, and the feed carries the same entries.&lt;/li&gt;&lt;li&gt;Cherry leaves and pale oak leaves showed green in the block pictures. The picture tints now follow the game's own rules, so leaves that carry no tint show their real color, and tinted blocks such as grass and water use the game's default colors.&lt;/li&gt;&lt;li&gt;A few smaller things landed too. The app calls itself a map art maker, dim text is a touch brighter, keyboard users get a skip link straight to the controls, the installed app icon fits every phone's icon shape, and the block picture sheet is about half the size it was.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>separate panels start on the ground, and you pick how the build is cut next to max height</title>
+    <id>tag:b8b7.live,2026:arachne:2026-08-28-build-modes</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-08-28T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;separate panels start on the ground, and you pick how the build is cut next to max height&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Separate panels used to inherit the heights of the whole picture, so a panel from the bottom half of a tall picture could float far above the ground with nothing under it. Every panel now starts on the ground with its own reference row, and max height measures the tallest panel. Colors are unchanged: the shade of every block comes from its height against the block north of it, and that never moves.&lt;/li&gt;&lt;li&gt;The two download checkboxes are now one setting under height called build as: separate panels, panels that continue each other, or one piece. It sits next to max height because it changes what max height measures. Panels that continue each other share heights, so the build sheet reminds you to paste every panel at the same Y.&lt;/li&gt;&lt;li&gt;A panel with nothing to place, such as a fully see-through corner of the picture, gets no schematic file. The download section says which panels were left out.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>a shorter tools checklist</title>
+    <id>tag:b8b7.live,2026:arachne:2026-08-28-mending-note</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-08-28T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;a shorter tools checklist&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Tools with Mending no longer carry a repair note in the Summary checklist. The same line was repeating under every mending tool and you already know what Mending does. Nothing else changed.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>works on phones and tablets, installs as an app, shares straight to Discord, and filler is only ever what a block needs</title>
+    <id>tag:b8b7.live,2026:arachne:2026-08-27-phones-and-filler</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-08-27T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;works on phones and tablets, installs as an app, shares straight to Discord, and filler is only ever what a block needs&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Arachne now fits a phone. Panels stack, controls are sized for thumbs, the palette and materials lists read as cards, and a bar at the bottom jumps between Source, Palette, Summary and Download. Turn on explain controls near the top and every setting shows its help text under it, with a legend above the palette. On a phone a share button next to download hands the file to Discord, mail or whatever app you use. Nothing changed on desktop.&lt;/li&gt;&lt;li&gt;You can add Arachne to your home screen. It opens like an app and keeps working offline after the first visit. Updates arrive on their own the next time you open it with a connection. If it looks stale, close it and open it again.&lt;/li&gt;&lt;li&gt;The palette never picks for you. The heading now says which preset is in play and an empty palette says so too. New preset b8b7's choice, the blocks I build with (which of course are the best and not picked arbitrarily).&lt;/li&gt;&lt;li&gt;Filler blocks are placed only where a block would fall or pop off without one, plus the noobline. The old survival placement option added tall pillars under every step so that each block had a face to click against. Material lists are shorter for staircased builds as a result.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>a max height cap, a dither picker with live samples, and a smaller download</title>
+    <id>tag:b8b7.live,2026:arachne:2026-08-16-height-and-dither</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-08-16T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;a max height cap, a dither picker with live samples, and a smaller download&lt;/p&gt;&lt;ul&gt;&lt;li&gt;You can cap how tall the staircased build stands. Arachne reports how tall the picture wants to be, recolors the fewest blocks it can to fit under your cap, and tells you what the squeeze costs in picture accuracy. Most pictures give up very little: a sky that wants to climb 100 blocks usually fits under 20 for a few percent.&lt;/li&gt;&lt;li&gt;The dither menu is a real picker now. Every mode shows a live sample made from your own enabled palette, so you can see the difference between smooth diffusion, grid mixing, and film grain before choosing. A new mode, Yliluoma blue noise, holds color like the 4×4 mix and reads like film grain.&lt;/li&gt;&lt;li&gt;The preview panel grew tidy controls, and view the build now sits right under the preview as well as next to download.&lt;/li&gt;&lt;li&gt;Material lists for standalone panels now include the reference row the panel stands on. Earlier lists ran up to 128 filler blocks short per panel; side by side builds were always correct.&lt;/li&gt;&lt;li&gt;The app is about 20 KB smaller to download. Big photos no longer strain memory, and imported settings save the moment they load.&lt;/li&gt;&lt;li&gt;Height modes are named the way players say them: staircased (3D) and flat (2D).&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>a Communities section, starting with BlossomCraft</title>
+    <id>tag:b8b7.live,2026:arachne:2026-08-14-blossom</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;a Communities section, starting with BlossomCraft&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The About panel has a Communities section now. First resident: BlossomCraft, where I play and build my map art. If you enjoy map art, come build with us at blossomcraft.org.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>the community server opens, and release notes get a feed</title>
+    <id>tag:b8b7.live,2026:arachne:2026-08-14-community</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;the community server opens, and release notes get a feed&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Arachne has a community Discord now. The invite lives at b8b7.live/discord, and the About panel links it. Show off what you built or come ask questions.&lt;/li&gt;&lt;li&gt;Release notes are also a feed now, at b8b7.live/arachne/feed.xml. Any feed reader can follow along.&lt;/li&gt;&lt;li&gt;Search engines and link previews now get proper metadata: a page title, a description, and a preview card. These are static tags in the page itself, not code. They collect nothing, and the no-tracking stance is unchanged.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>filler counts in your materials list, a proper filler picker, and this changelog</title>
+    <id>tag:b8b7.live,2026:arachne:2026-08-14-filler</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-08-14T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;filler counts in your materials list, a proper filler picker, and this changelog&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The Summary and the build sheet count filler as its own row, for the whole build or one panel, so what you farm matches what you place.&lt;/li&gt;&lt;li&gt;Filler moved to its own section in Source, with a searchable picker that shows sprites, lists your palette's blocks first, and only offers blocks that actually work as filler.&lt;/li&gt;&lt;li&gt;The picker follows the game version you export for. A filler pick that version does not have is flagged, and the export waits until you fix it.&lt;/li&gt;&lt;li&gt;The header grew an About panel with quick links, a spider favicon, and this what's new panel. Updates land here; nothing about your visit is tracked.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>the beta opens</title>
+    <id>tag:b8b7.live,2026:arachne:2026-08-13-beta</id>
+    <link href="https://sovalyecraft.space/map-art/"/>
+    <updated>2026-08-13T00:00:00Z</updated>
+    <content type="html">&lt;p&gt;the beta opens&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Public beta at b8b7.live/arachne, source on GitHub.&lt;/li&gt;&lt;li&gt;Transparency handling verified against a real in-game build.&lt;/li&gt;&lt;/ul&gt;</content>
+  </entry>
+</feed>
