@@ -1,0 +1,2980 @@
+diff --git a/web/index.html b/web/index.html
+index 050597a..d197c66 100644
+--- a/web/index.html
++++ b/web/index.html
+@@ -3,31 +3,26 @@
+   <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <title>Arachne · Minecraft map art maker and generator</title>
+-    <meta name="description" content="Free Minecraft map art maker. Turn a picture into a Litematica or WorldEdit schematic with a palette priced for survival. It runs in your browser with no tracking." />
++    <title>Map Art · OnePiece Team</title>
++    <meta name="description" content="OnePiece Team Map Art: turn a picture into Minecraft map art and a Litematica or NBT schematic, right in your browser." />
+     <link rel="canonical" href="https://sovalyecraft.space/map-art/" />
+     <meta property="og:type" content="website" />
+     <meta property="og:url" content="https://sovalyecraft.space/map-art/" />
+-    <meta property="og:title" content="Arachne · Minecraft map art maker and generator" />
+-    <meta property="og:description" content="Free Minecraft map art maker. Turn a picture into map art in your browser, with no account and no tracking." />
+-    <meta property="og:image" content="https://b8b7.live/assets/brand/og-card.jpg" />
+-    <meta property="og:image:width" content="1200" />
+-    <meta property="og:image:height" content="630" />
+-    <meta property="og:image:alt" content="A rolled Minecraft map sealed with a spider medallion" />
+-    <meta property="og:site_name" content="b8b7.live" />
+-    <meta name="twitter:card" content="summary_large_image" />
++    <meta property="og:title" content="Map Art · OnePiece Team" />
++    <meta property="og:description" content="Turn a picture into Minecraft map art in your browser. Nothing is uploaded." />
++    <meta property="og:site_name" content="OnePiece Team" />
+     <script type="application/ld+json">
+     {
+       "@context": "https://schema.org",
+       "@type": "WebApplication",
+-      "name": "Arachne",
++      "name": "Map Art · OnePiece Team",
+       "url": "https://sovalyecraft.space/map-art/",
+-      "description": "Free Minecraft map art maker. Turn a picture into a Litematica or WorldEdit schematic with a palette priced for survival. It runs in your browser with no tracking.",
++      "description": "Turn a picture into Minecraft map art and a Litematica or NBT schematic. Runs in your browser.",
+       "applicationCategory": "UtilitiesApplication",
+       "operatingSystem": "Any",
+       "browserRequirements": "Requires JavaScript and WebAssembly",
+       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+-      "author": {"@type": "Person", "name": "b8b7", "url": "https://b8b7.live/"},
++      "author": {"@type": "Organization", "name": "OnePiece Team", "url": "https://sovalyecraft.space/"},
+       "license": "https://www.gnu.org/licenses/gpl-3.0.html"
+     }
+     </script>
+@@ -35,41 +30,49 @@
+     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+     <link rel="manifest" href="/manifest.webmanifest" />
+-    <link rel="alternate" type="application/atom+xml" title="Arachne release notes" href="https://sovalyecraft.space/map-art/feed.xml" />
+-    <meta name="theme-color" content="#16181d" />
++    <meta name="theme-color" content="#07090A" />
+     <link rel="stylesheet" href="/src/style.css" />
++    <link rel="stylesheet" href="/src/shell.css" />
+   </head>
+-  <body>
+-    <a class="skip-link" href="#source-panel">Skip to the tool</a>
+-    <header>
+-      <h1>Arachne <span class="beta-chip">beta</span></h1>
+-      <p class="tag">Minecraft map art maker</p>
+-      <nav class="page-links" aria-label="pages"><a href="faq/">FAQ</a><a href="colors/">colors</a><a href="fonts/">fonts</a><a href="changelog/">release notes</a></nav>
+-      <span id="status" class="status">loading…</span>
+-    </header>
+-    <section id="about-panel">
+-      <h2>About</h2>
+-      <p class="note">Free Minecraft map art maker for survival builders, made and run by me, b8b7!
+-        Give it a picture and it plans the whole build, from the palette to the
+-        schematics and the materials list. Below you will find the source, my
+-        other Minecraft work, and a tip jar if you enjoyed the project.</p>
+-      <div class="row brand-row">
+-        <a class="brand-chip" href="https://github.com/b8b7lives/arachne" target="_blank" rel="noopener noreferrer" title="the footer offers the source of this exact build"><img class="brand-ico" src="/icons/github.svg" alt="" />GitHub</a>
+-        <a class="brand-chip" href="https://modrinth.com/user/b8b7" target="_blank" rel="noopener noreferrer"><img class="brand-ico" src="/icons/modrinth.svg" alt="" />Modrinth</a>
+-        <a class="brand-chip" href="https://www.curseforge.com/members/b8b7lives/projects" target="_blank" rel="noopener noreferrer"><img class="brand-ico" src="/icons/curseforge.svg" alt="" />CurseForge</a>
+-        <a class="brand-chip" href="https://ko-fi.com/b8b7live" target="_blank" rel="noopener noreferrer"><img class="brand-ico" src="/icons/kofi.svg" alt="" />Ko-fi</a>
+-        <a class="brand-chip" href="https://b8b7.live/discord" target="_blank" rel="noopener noreferrer" title="community server: builds, help, release notes"><img class="brand-ico" src="/icons/discord.svg" alt="" />Discord</a>
++  <body data-view="studio">
++    <a class="skip-link" href="#view-studio">Skip to the tool</a>
++    <header class="appbar" id="appbar">
++      <a class="back" id="back-home" href="/" aria-label="OnePiece Team'e Dön"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg><span class="back-label">OnePiece Team'e Dön</span></a>
++      <div class="appbar-title">
++        <img class="appbar-logo" src="/assets/logo.png" width="61" height="34" alt="" decoding="async" />
++        <h1><span class="appbar-app">Map Art</span> <span class="appbar-sep" aria-hidden="true">/</span> <span class="appbar-by">Arachne <span class="beta-chip">beta</span></span></h1>
+       </div>
+-      <div class="communities" id="communities" hidden>
+-        <div class="sub-head">communities that build with Arachne <span class="hint" role="img" aria-label="Communities Arachne is part of. Nothing here is paid or sponsored, and none of them run this project. If your server, stream, or project builds with Arachne, say hi in the Discord or write arachne@b8b7.live" title="Communities Arachne is part of. Nothing here is paid or sponsored, and none of them run this project. If your server, stream, or project builds with Arachne, say hi in the Discord or write arachne@b8b7.live">?</span></div>
+-        <div id="communities-cards"></div>
++      <div class="appbar-spacer"></div>
++      <label class="ver" for="game-version"><span class="ver-label">Minecraft</span>
++        <select id="game-version" aria-label="Minecraft sürümü"></select></label>
++      <span id="status" class="status" role="status">loading…</span>
++      <div class="help">
++        <button type="button" id="help-btn" class="help-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" aria-label="Yardım">
++          <svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 9.5a2.5 2.5 0 115 0c0 1.7-2.5 2-2.5 4M12 17v.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
++          <span class="help-label">Yardım</span></button>
++        <div class="help-menu" id="help-menu" role="menu" hidden>
++          <a role="menuitem" href="faq/">SSS · FAQ</a>
++          <a role="menuitem" href="colors/">Renkler · colors</a>
++          <a role="menuitem" href="fonts/">Yazı tipleri · fonts</a>
++          <a role="menuitem" href="changelog/">Sürüm notları · release notes</a>
++          <div class="help-opt" id="explain-slot"></div>
++        </div>
+       </div>
+-    </section>
++    </header>
++    <div class="tabbar" id="tabbar" role="tablist" aria-label="Çalışma alanı">
++      <button type="button" role="tab" class="tab" id="tab-studio" data-view="studio" aria-controls="view-studio" aria-selected="true"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 5h16v14H4zM9 5v14M15 5v14" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="tab-tr">Stüdyo</span><span class="tab-en">Studio</span></button>
++      <button type="button" role="tab" class="tab" id="tab-palette" data-view="palette" aria-controls="view-palette" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="tab-tr">Palet</span><span class="tab-en">Palette</span></button>
++      <button type="button" role="tab" class="tab" id="tab-tools" data-view="tools" aria-controls="view-tools" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14 6l4 4M5 19l9-9M12 4l8 8-3 3-8-8z" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="tab-tr">Araçlar</span><span class="tab-en">Tools</span></button>
++      <button type="button" role="tab" class="tab" id="tab-export" data-view="export" aria-controls="view-export" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg><span class="tab-tr">Dışa aktar</span><span class="tab-en">Export</span></button>
++    </div>
+ 
+-    <main>
+-      <section id="source-panel" tabindex="-1">
+-        <h2>Source</h2>
+-        <div class="ctl-group">
++    <main id="workspace">
++      <div class="view" id="view-studio" data-view="studio" role="tabpanel" aria-labelledby="tab-studio">
++        <div class="studio">
++          <div class="col col-left" id="col-left">
++      <section id="source-panel" tabindex="-1" aria-label="Görsel ve kompozisyon">
++        <h2>Image</h2>
++                <div class="ctl-group">
+           <div class="ctl" title="a build is placed block by block from a schematic. A map file is dropped into a world save and needs no blocks, so it can use every color the game knows in all four shades, including the one no block makes">
+             <label class="field-name" for="make-mode">make</label>
+             <span class="ctl-body">
+@@ -84,8 +87,10 @@
+             <span class="ctl-body"><input type="file" id="file" accept="image/*" /></span>
+           </div>
+         </div>
+-
+-        <div class="subsection" id="framing-section">
++        <div class="img-actions" id="img-actions">
++          <button type="button" id="img-pick" class="pick-btn">Choose or replace picture</button>
++        </div>
++                <div class="subsection" id="framing-section">
+           <div class="sub-head">size &amp; framing</div>
+           <div class="ctl" title="each map is 128×128 blocks in game">
+             <label class="field-name" for="maps-w">size</label>
+@@ -132,8 +137,7 @@
+           </div>
+           </div>
+         </div>
+-
+-        <div class="subsection" id="adjust-section">
++                <div class="subsection" id="adjust-section">
+           <div class="sub-head">
+             <label title="brightness, contrast, saturation and white balance. Changes what Arachne builds from; the picture on disk is never touched">
+               <input type="checkbox" id="adjust-on" /> adjust color properties</label>
+@@ -173,8 +177,7 @@
+           </div>
+           </div>
+         </div>
+-
+-        <div class="subsection" id="text-section">
++                <div class="subsection" id="text-section">
+           <div class="sub-head">
+             <label title="draw these lines on the map. Off keeps them for later without building them">
+               <input type="checkbox" id="text-on" checked /> text on the map</label>
+@@ -311,39 +314,59 @@
+             </div>
+           </div>
+         </div>
+-
+-        <div class="subsection" id="background-row" hidden>
+-          <div class="sub-head">transparency</div>
+-          <div class="ctl" title="transparent pixels place no blocks. The pad fit keeps this on, because padding is always transparent">
+-            <label class="field-name" for="honor-alpha">transparent areas</label>
+-            <span class="ctl-body">
+-              <label><input type="checkbox" id="honor-alpha" checked /> leave them empty</label>
+-            </span>
++      </section>
+           </div>
+-          <div class="ctl" title="what goes where the picture is transparent, instead of leaving holes in the build">
+-            <label class="field-name" for="bg-mode">fill</label>
+-            <span class="ctl-body">
+-              <select id="bg-mode">
+-              <option value="off" selected>none</option>
+-              <option value="smooth" title="the closest color a map can make, one block">flat color</option>
+-              <option value="dithered" title="your exact color, dithered like the picture">dithered</option>
+-            </select>
+-              <input type="color" id="bg-color" value="#151515" aria-label="fill color" title="the color to fill with" />
+-              <span class="note" id="bg-note"></span>
+-            </span>
++          <div class="col col-center" id="col-center">
++      <section id="preview-panel" aria-label="Önizleme">
++        <div class="pv-bar">
++          <h2>Preview <span class="dim" id="preview-meta"></span></h2>
++          <div class="pv-tools preview-zoom" role="toolbar" aria-label="Önizleme araçları">
++            <button type="button" id="zoom-out" class="mini icon" title="zoom out" aria-label="Uzaklaştır">−</button>
++            <button type="button" id="zoom-fit" class="mini" title="fit the whole map in the panel">fit</button>
++            <button type="button" id="zoom-in" class="mini icon" title="zoom in; the preview grows over the page and keeps following your scroll" aria-label="Yakınlaştır">+</button>
++            <label class="mini-label chip-toggle" title="map panel boundaries, named the way the download names files"><input type="checkbox" id="grid-overlay" /> <span>grid</span></label>
++          </div>
++          <div class="pv-tools preview-controls">
++            <button type="button" id="preview-place" class="mini"
++              title="sit the preview in the page under Source instead of the scrolling rail">into the page</button>
++            <button type="button" id="preview-popout" class="mini" hidden
++              title="open the preview in its own always-on-top window">pop out</button>
++            <button type="button" id="preview-toggle" class="mini preview-toggle"
++              title="collapse the preview panel">hide</button>
+           </div>
+-          <div class="ctl-group" id="alpha-threshold-row" hidden>
+-          <div class="ctl ctl-range" title="pixels less opaque than this count as transparent and place no blocks">
+-            <label class="field-name" for="alpha-threshold">transparent below</label>
+-            <input type="range" id="alpha-threshold" min="1" max="99" step="1" value="50" />
+-            <input type="number" class="slider-num" id="alpha-threshold-num" min="1" max="99" step="1" value="50" title="type or arrow for fine changes" />
+-            <span class="field-unit">% opacity</span>
++        </div>
++        <div id="progress" class="progress idle" aria-hidden="true"><div id="progress-fill"></div></div>
++        <div id="preview-slot">
++          <div id="preview-wrap" title="click to load an image, or drag and drop or paste anywhere">
++            <canvas id="preview" width="128" height="128"></canvas>
++            <div id="grid-lines"></div>
++            <div id="preview-empty">
++              <span class="preview-empty-mark">+</span>
++              <span>choose a picture</span>
++            </div>
+           </div>
++        </div>
++        <div id="preview-away" hidden>
++          <span class="away-text">The preview is in its own window.</span>
++          <button type="button" id="preview-return">bring it back</button>
++        </div>
++        <p class="note" id="preview-hint">drag and drop or paste a picture anywhere on the page</p>
++        <div class="panel-utility preview-utility">
++          <div class="utility-row">
++            <button type="button" id="view-build" class="mini" disabled
++              title="the whole schematic block by block: real textures, heights, and the exact blocks these settings pick. Nothing downloads and nothing leaves the page">view the build</button>
++            <a class="mini jump" href="#export-panel">go to download</a>
++            <button type="button" id="reset-default" class="mini danger"
++              title="back to the starting loadout, palette, filters and settings. Your saved presets are kept">reset all settings</button>
+           </div>
+         </div>
+-
+-        <div class="subsection" id="build-section">
+-          <div class="sub-head">build</div>
++      </section>
++          </div>
++          <div class="col col-right" id="col-right">
++      <section id="settings-panel" aria-label="Üretim ayarları">
++        <h2>Generation <span class="dim" id="settings-meta"></span></h2>
++        <div class="subsection" id="dither-section">
++          <div class="sub-head">dithering</div>
+           <div class="ctl">
+             <span class="field-name">dither</span>
+             <span class="ctl-body">
+@@ -375,10 +398,48 @@
+               </button>
+               <div class="picker-drop dither-drop" id="dither-drop" role="listbox" hidden></div>
+               </span>
+-              <label title="rearranges blocks to look right on a map framed a few blocks away. Slow, and slightly worse up close">
+-                <input type="checkbox" id="dbs-refine" />refine for display (slow)</label>
+             </span>
+           </div>
++        </div>
++        <div class="subsection" id="view-section" data-closed>
++          <div class="sub-head">viewing distance</div>
++<div class="ctl"><span class="field-name">optimize</span><span class="ctl-body"><label title="rearranges blocks to look right on a map framed a few blocks away. Slow, and slightly worse up close">
++                <input type="checkbox" id="dbs-refine" />refine for display (slow)</label></span></div>
++        </div>
++        <div class="subsection" id="color-section">
++          <div class="sub-head">color &amp; transparency</div>
++<p class="note" id="color-note">Brightness, contrast, saturation and white balance are under Image. Transparent areas of a picture are handled here.</p>        <div class="subsection" id="background-row" hidden>
++          <div class="sub-head">transparency</div>
++          <div class="ctl" title="transparent pixels place no blocks. The pad fit keeps this on, because padding is always transparent">
++            <label class="field-name" for="honor-alpha">transparent areas</label>
++            <span class="ctl-body">
++              <label><input type="checkbox" id="honor-alpha" checked /> leave them empty</label>
++            </span>
++          </div>
++          <div class="ctl" title="what goes where the picture is transparent, instead of leaving holes in the build">
++            <label class="field-name" for="bg-mode">fill</label>
++            <span class="ctl-body">
++              <select id="bg-mode">
++              <option value="off" selected>none</option>
++              <option value="smooth" title="the closest color a map can make, one block">flat color</option>
++              <option value="dithered" title="your exact color, dithered like the picture">dithered</option>
++            </select>
++              <input type="color" id="bg-color" value="#151515" aria-label="fill color" title="the color to fill with" />
++              <span class="note" id="bg-note"></span>
++            </span>
++          </div>
++          <div class="ctl-group" id="alpha-threshold-row" hidden>
++          <div class="ctl ctl-range" title="pixels less opaque than this count as transparent and place no blocks">
++            <label class="field-name" for="alpha-threshold">transparent below</label>
++            <input type="range" id="alpha-threshold" min="1" max="99" step="1" value="50" />
++            <input type="number" class="slider-num" id="alpha-threshold-num" min="1" max="99" step="1" value="50" title="type or arrow for fine changes" />
++            <span class="field-unit">% opacity</span>
++          </div>
++          </div>
++        </div>
++        </div>
++        <div class="subsection" id="height-section">
++          <div class="sub-head">height</div>
+           <div class="ctl" id="height-row">
+             <label class="field-name" for="height-mode">height</label>
+             <span class="ctl-body">
+@@ -386,27 +447,22 @@
+               <option value="stepped" selected>staircased (3D)</option>
+               <option value="flat">flat (2D)</option>
+             </select>
+-            <label id="cliff-cap-label" title="biggest height jump between neighboring rows. Blank allows any jump for the lowest possible build; 1 gives classic gentle terraces. This limits single steps; max height below limits the whole build">
+-              max step <input type="number" id="cliff-cap" value="" min="1" placeholder="any" /></label>
+-            <label id="max-height-label" title="tallest the staircased build may stand, in blocks. Blank lets the picture staircase as tall as it wants. Lower is easier to build and recolors some blocks to fit; the note here reports what it costs">
+-              max height <input type="number" id="max-height" value="" min="0" placeholder="any" /></label>
+-            </span>
+-          </div>
+-          <div class="ctl" id="build-as-row" title="how the build is put together, which decides what max height measures and how the download is cut">
+-            <label class="field-name" for="build-mode">build as</label>
+-            <span class="ctl-body">
+-              <select id="build-mode">
+-              <option value="panels" selected title="one file per map. Every panel starts on the ground with its own reference row along its north edge, so you can build it anywhere. Max height is the tallest panel">panels</option>
+-              <option value="continued" title="each panel starts where the one above it left off, so they stack into one build, all at the same y-level">continued</option>
+-              <option value="one_piece" title="a single schematic with one reference row along the north edge">one piece</option>
+-            </select>
+             </span>
+           </div>
+-          <div class="ctl ctl-wide" id="max-height-note-row">
++        </div>
++        <div class="subsection" id="stair-section" data-closed>
++          <div class="sub-head">staircase</div>
++<div class="ctl"><span class="field-name">max step</span><span class="ctl-body"><label id="cliff-cap-label" title="biggest height jump between neighboring rows. Blank allows any jump for the lowest possible build; 1 gives classic gentle terraces. This limits single steps; max height below limits the whole build">
++              max step <input type="number" id="cliff-cap" value="" min="1" placeholder="any" /></label></span></div>
++        </div>
++        <div class="subsection" id="maxh-section" data-closed>
++          <div class="sub-head">max height</div>
++<div class="ctl"><span class="field-name">limit</span><span class="ctl-body"><label id="max-height-label" title="tallest the staircased build may stand, in blocks. Blank lets the picture staircase as tall as it wants. Lower is easier to build and recolors some blocks to fit; the note here reports what it costs">
++              max height <input type="number" id="max-height" value="" min="0" placeholder="any" /></label></span></div>          <div class="ctl ctl-wide" id="max-height-note-row">
+             <span class="note" id="max-height-note"></span>
+           </div>
+         </div>
+-        <div class="subsection" id="filler-section">
++                <div class="subsection" id="filler-section">
+           <div class="sub-head" title="cheap blocks the build needs but the picture never shows, under blocks that need support and along the noobline">filler <span class="dim" id="filler-meta"></span></div>
+           <div class="ctl" title="cheap blocks placed under the map because the block above physically needs them. How you place the map is up to you, so nothing is added for placement">
+             <label class="field-name" for="support-mode">where</label>
+@@ -431,139 +487,30 @@
+           </div>
+           <p class="note" id="filler-notice" hidden></p>
+         </div>
+-      </section>
+-
+-      <section id="preview-panel">
+-        <h2>Preview
+-          <span class="dim" id="preview-meta"></span>
+-        </h2>
+-        <div class="row preview-controls">
+-          <span class="ctl-name">view</span>
+-          <button type="button" id="preview-place" class="mini"
+-            title="sit the preview in the page under Source instead of the scrolling rail">into the page</button>
+-          <button type="button" id="preview-popout" class="mini" hidden
+-            title="open the preview in its own always-on-top window">pop out</button>
+-          <button type="button" id="preview-toggle" class="mini preview-toggle"
+-            title="collapse the preview panel">hide</button>
+-        </div>
+-        <div class="row preview-controls preview-zoom">
+-          <button type="button" id="zoom-out" class="mini" title="zoom out">−</button>
+-          <button type="button" id="zoom-fit" class="mini" title="fit the whole map in the panel">fit</button>
+-          <button type="button" id="zoom-in" class="mini" title="zoom in; the preview grows over the page and keeps following your scroll">+</button>
+-          <label class="mini-label" title="map panel boundaries, named the way the download names files"><input type="checkbox" id="grid-overlay" /> grid</label>
+-        </div>
+-        <div id="preview-slot">
+-          <div id="progress" class="progress idle" aria-hidden="true"><div id="progress-fill"></div></div>
+-          <div id="preview-wrap" title="click to load an image, or drag and drop or paste anywhere">
+-            <canvas id="preview" width="128" height="128"></canvas>
+-            <div id="grid-lines"></div>
+-            <div id="preview-empty">
+-              <span class="preview-empty-mark">+</span>
+-              <span>choose a picture</span>
+-            </div>
+-          </div>
+-        </div>
+-        <div id="preview-away" hidden>
+-          <span class="away-text">The preview is in its own window.</span>
+-          <button type="button" id="preview-return">bring it back</button>
+-        </div>
+-        <p class="note" id="preview-hint">drag and drop or paste a picture anywhere on the page</p>
+-        <div class="panel-utility preview-utility">
+-          <div class="utility-row">
+-            <button type="button" id="view-build" class="mini" disabled
+-              title="the whole schematic block by block: real textures, heights, and the exact blocks these settings pick. Nothing downloads and nothing leaves the page">view the build</button>
+-            <a class="mini jump" href="#export-panel">go to download</a>
+-          </div>
+-          <div class="utility-row">
+-            <button type="button" id="reset-default" class="mini danger"
+-              title="back to the starting loadout, palette, filters and settings. Your saved presets are kept">reset all settings</button>
+-          </div>
+-        </div>
+-      </section>
+-
+-      <section id="loadout-panel">
+-        <h2>Loadout <span class="dim" id="loadout-meta"></span></h2>
+-        <div class="ctl-group">
+-          <div class="ctl" title="a saved kit, your tools, the conditions you mine in, and the two filters that depend on what you carry">
+-            <label class="field-name" for="loadout-preset">preset</label>
+-            <span class="ctl-body">
+-              <select id="loadout-preset"></select>
+-              <button type="button" id="loadout-preset-save" class="mini"
+-                title="save the current tools, conditions and tool-dependent filters under a name">save…</button>
+-              <button type="button" id="loadout-preset-rename" class="mini">rename</button>
+-              <button type="button" id="loadout-preset-delete" class="mini">delete</button>
+-            </span>
+-          </div>
+-        </div>
+-
+-        <div class="subsection" id="tools-section">
+-          <div class="sub-head">your tools</div>
+-          <div id="loadout"></div>
+-          <button type="button" id="tool-add" class="mini">+ tool</button>
+-        </div>
+-
+-        <div class="subsection" id="conditions-section">
+-          <div class="sub-head">conditions</div>
+-          <div class="ctl" title="beacon haste level, 0 for none. Each level is 20% faster">
+-            <label class="field-name" for="haste">haste</label>
+-            <span class="ctl-body">
+-              <input type="number" id="haste" value="0" min="0" max="10" />
+-              <span class="note" id="haste-note" hidden
+-                title="a max-level beacon gives Haste 2. Higher levels exist with mods and servers, and are priced the same way">beacons stop at 2</span>
+-            </span>
+-          </div>
+-          <div class="ctl">
+-            <span class="field-name">mining</span>
++        <div class="subsection" id="build-section" data-closed>
++          <div class="sub-head">construction</div>
++          <div class="ctl" id="build-as-row" title="how the build is put together, which decides what max height measures and how the download is cut">
++            <label class="field-name" for="build-mode">build as</label>
+             <span class="ctl-body">
+-              <label title="every block takes five times longer to break while you are not standing on solid ground"><input type="checkbox" id="flying" /> while flying</label>
+-              <label title="vanilla pauses a quarter second after every break that is not instant. Tick this if you run the client mod that removes the pause, where your server allows it"><input type="checkbox" id="no-cooldown" /> with the no cooldown mod</label>
++              <select id="build-mode">
++              <option value="panels" selected title="one file per map. Every panel starts on the ground with its own reference row along its north edge, so you can build it anywhere. Max height is the tallest panel">panels</option>
++              <option value="continued" title="each panel starts where the one above it left off, so they stack into one build, all at the same y-level">continued</option>
++              <option value="one_piece" title="a single schematic with one reference row along the north edge">one piece</option>
++            </select>
+             </span>
+           </div>
+         </div>
+-
+-        <div class="subsection" id="loadout-filters-section">
+-          <div class="sub-head">filters that depend on your tools
+-            <span class="chip-filter some-off" id="loadout-empty" hidden
+-              title="these colors have no block left that your tools and filters allow, so they place nothing"></span>
+-          </div>
+-          <div id="loadout-filters"></div>
+-        </div>
+       </section>
+-
+-      <section id="io-panel">
+-        <h2>Import / export</h2>
+-
+-        <div class="subsection" id="import-section">
+-          <div class="sub-head">import</div>
+-          <div class="ctl ctl-wide">
+-            <span class="ctl-body">
+-            <button type="button" id="import-open" class="mini" title="a mapartcraft palette file, preset string or link, or a settings file exported here. Colors the palette leaves out are switched off">import a palette…</button>
+-            <input type="file" id="import-file" accept=".txt,.json,text/plain,application/json" hidden />
+-            <input type="text" id="import-paste" placeholder="or paste a mapartcraft preset or link" />
+-            <button type="button" id="import-apply" class="mini">use it</button>
+-            </span>
+           </div>
+         </div>
++        <nav class="studio-dock" id="studio-dock" aria-label="Stüdyo bölümleri">
++          <button type="button" class="dock-btn" data-pane="left" aria-pressed="false">Görsel <span>Image</span></button>
++          <button type="button" class="dock-btn" data-pane="right" aria-pressed="false">Ayarlar <span>Settings</span></button>
++        </nav>
++      </div>
+ 
+-        <div class="subsection" id="export-section">
+-          <div class="sub-head">export</div>
+-          <div class="ctl ctl-wide">
+-            <span class="ctl-body">
+-            <button type="button" id="share-link" class="mini"
+-              title="a short link carrying just this palette: the colors you have on and the block you picked for each">copy a link to this palette</button>
+-            <button type="button" id="export-settings" class="mini"
+-              title="everything on this page as a file you can keep or send to someone">export my settings</button>
+-            </span>
+-          </div>
+-          <div class="ctl ctl-wide" id="share-row" hidden>
+-            <input type="text" id="share-out" readonly />
+-          </div>
+-        </div>
+-
+-        <p class="note" id="io-result" hidden></p>
+-      </section>
+-
+-      <section id="solver-panel">
++      <div class="view" id="view-palette" data-view="palette" role="tabpanel" aria-labelledby="tab-palette" hidden>
++            <section id="solver-panel">
+         <h2>Palette <span class="dim" id="palette-meta"></span></h2>
+         <p class="note" id="palette-state" hidden></p>
+         <p class="note">Every block offered for a color makes the exact same pixel,
+@@ -571,15 +518,9 @@
+           cheapest to break and get back with your tools. Click another block to
+           override it, or <b>×</b> to drop the color.</p>
+ 
+-        <div class="subsection" id="version-section">
++<div class="subsection" id="version-section">
+           <div class="sub-head">game version</div>
+-          <div class="ctl">
+-            <label class="field-name" for="game-version">version</label>
+-            <span class="ctl-body">
+-              <select id="game-version"></select>
+-              <span class="note" id="version-note"></span>
+-            </span>
+-          </div>
++          <p class="note" id="version-note"></p>
+         </div>
+ 
+         <div class="subsection" id="palette-presets-section">
+@@ -637,11 +578,63 @@
+             </select></label>
+             </span>
+           </div>
++          <div class="pal-search"><label class="field-name" for="palette-search">search</label><input type="search" id="palette-search" placeholder="color or block name" autocomplete="off" spellcheck="false" /><span class="note" id="palette-search-count" aria-live="polite"></span></div>
+           <div id="palette"></div>
+         </div>
+       </section>
++      </div>
++
++      <div class="view" id="view-tools" data-view="tools" role="tabpanel" aria-labelledby="tab-tools" hidden>
++        <div class="two">
++            <section id="loadout-panel">
++        <h2>Loadout <span class="dim" id="loadout-meta"></span></h2>
++        <div class="ctl-group">
++          <div class="ctl" title="a saved kit, your tools, the conditions you mine in, and the two filters that depend on what you carry">
++            <label class="field-name" for="loadout-preset">preset</label>
++            <span class="ctl-body">
++              <select id="loadout-preset"></select>
++              <button type="button" id="loadout-preset-save" class="mini"
++                title="save the current tools, conditions and tool-dependent filters under a name">save…</button>
++              <button type="button" id="loadout-preset-rename" class="mini">rename</button>
++              <button type="button" id="loadout-preset-delete" class="mini">delete</button>
++            </span>
++          </div>
++        </div>
++
++        <div class="subsection" id="tools-section">
++          <div class="sub-head">your tools</div>
++          <div id="loadout"></div>
++          <button type="button" id="tool-add" class="mini">+ tool</button>
++        </div>
++
++        <div class="subsection" id="conditions-section">
++          <div class="sub-head">conditions</div>
++          <div class="ctl" title="beacon haste level, 0 for none. Each level is 20% faster">
++            <label class="field-name" for="haste">haste</label>
++            <span class="ctl-body">
++              <input type="number" id="haste" value="0" min="0" max="10" />
++              <span class="note" id="haste-note" hidden
++                title="a max-level beacon gives Haste 2. Higher levels exist with mods and servers, and are priced the same way">beacons stop at 2</span>
++            </span>
++          </div>
++          <div class="ctl">
++            <span class="field-name">mining</span>
++            <span class="ctl-body">
++              <label title="every block takes five times longer to break while you are not standing on solid ground"><input type="checkbox" id="flying" /> while flying</label>
++              <label title="vanilla pauses a quarter second after every break that is not instant. Tick this if you run the client mod that removes the pause, where your server allows it"><input type="checkbox" id="no-cooldown" /> with the no cooldown mod</label>
++            </span>
++          </div>
++        </div>
+ 
+-      <section id="summary-panel">
++        <div class="subsection" id="loadout-filters-section">
++          <div class="sub-head">filters that depend on your tools
++            <span class="chip-filter some-off" id="loadout-empty" hidden
++              title="these colors have no block left that your tools and filters allow, so they place nothing"></span>
++          </div>
++          <div id="loadout-filters"></div>
++        </div>
++      </section>
++            <section id="summary-panel">
+         <h2>Summary
+           <label class="mini-label" id="materials-basis-label" hidden>materials for
+             <select id="materials-basis"></select>
+@@ -649,8 +642,12 @@
+         </h2>
+         <div id="summary"></div>
+       </section>
++        </div>
++      </div>
+ 
+-      <section id="export-panel">
++      <div class="view" id="view-export" data-view="export" role="tabpanel" aria-labelledby="tab-export" hidden>
++        <div class="two two-export">
++            <section id="export-panel">
+         <h2>Download</h2>
+         <div class="ctl-group">
+           <div class="ctl" title="used for the schematic and zip filenames. Map data files keep vanilla's map_&lt;id&gt;.dat, which the game requires">
+@@ -701,20 +698,51 @@
+           picture. That row along the north edge, the noobline, keeps the top row
+           of the map the right shade.</p>
+       </section>
++            <section id="io-panel">
++        <h2>Import / export</h2>
++
++        <div class="subsection" id="import-section">
++          <div class="sub-head">import</div>
++          <div class="ctl ctl-wide">
++            <span class="ctl-body">
++            <button type="button" id="import-open" class="mini" title="a mapartcraft palette file, preset string or link, or a settings file exported here. Colors the palette leaves out are switched off">import a palette…</button>
++            <input type="file" id="import-file" accept=".txt,.json,text/plain,application/json" hidden />
++            <input type="text" id="import-paste" placeholder="or paste a mapartcraft preset or link" />
++            <button type="button" id="import-apply" class="mini">use it</button>
++            </span>
++          </div>
++        </div>
++
++        <div class="subsection" id="export-section">
++          <div class="sub-head">export</div>
++          <div class="ctl ctl-wide">
++            <span class="ctl-body">
++            <button type="button" id="share-link" class="mini"
++              title="a short link carrying just this palette: the colors you have on and the block you picked for each">copy a link to this palette</button>
++            <button type="button" id="export-settings" class="mini"
++              title="everything on this page as a file you can keep or send to someone">export my settings</button>
++            </span>
++          </div>
++          <div class="ctl ctl-wide" id="share-row" hidden>
++            <input type="text" id="share-out" readonly />
++          </div>
++        </div>
++
++        <p class="note" id="io-result" hidden></p>
++      </section>
++        </div>
++      </div>
+     </main>
+ 
++    <div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
++
+     <footer>
+-      <p><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank"
++      <p>Map Art, OnePiece Team · Arachne tabanlı · <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank"
+         rel="noopener noreferrer">GPL-3.0</a> · your image never leaves this browser ·
+         your palette and presets are saved in this browser only</p>
+       <p class="build">build <code id="build-id" title="click to copy, then quote it when reporting anything">…</code>
+-        · <a id="build-source" href="https://github.com/b8b7lives/arachne">download this build's source</a></p>
+-      <p class="build">questions and bug reports:
+-        <a href="mailto:arachne@b8b7.live">arachne@b8b7.live</a></p>
+-      <p class="build"><a href="faq/">FAQ</a>
+-        · <a href="colors/">colors</a>
+-        · <a href="fonts/">fonts</a>
+-        · <a href="changelog/">release notes</a></p>
++        · <a id="build-source" href="./source/">download this build's source</a>
++        · <a href="NOTICE.txt">NOTICE</a> · <a href="LICENSE-GPL-3.0.txt">LICENSE</a></p>
+       <p class="legal">Minecraft block textures and block data are the property of
+         Mojang. This project is independent and has no connection to Mojang or
+         Microsoft.</p>
+diff --git a/web/src/faq.json b/web/src/faq.json
+index 486a41d..09ed0a3 100644
+--- a/web/src/faq.json
++++ b/web/src/faq.json
+@@ -11,7 +11,7 @@
+       "id": "beta",
+       "q": "Why does it say beta?",
+       "a": [
+-        "The math is tested and the output has been verified in game, block for block. What remains rough is cosmetic, and the [release notes](../changelog/) show what changes from build to build. Bug reports are welcome, and [where to ask for help](#help) says how."
++        "The math is tested and the output has been verified in game, block for block. What remains rough is cosmetic, and the [release notes](../changelog/) show what changes from build to build."
+       ]
+     },
+     {
+@@ -146,40 +146,12 @@
+         "No. The game shades water by its depth, and each of the three shades needs a different depth, so the darkest blue would take a column of ten water blocks walled in on all four sides under a single pixel, and even the lightest needs a floor and walls of its own. No one builds map art that way, so Arachne does not place fluids. Nothing else on a map makes quite that blue, so a picture that leans on pure blue shifts a little toward the nearest blue the palette has."
+       ]
+     },
+-    {
+-      "id": "community",
+-      "q": "Is there somewhere to show what I built, or to see what others made?",
+-      "a": [
+-        "The community Discord at [b8b7.live/discord](https://b8b7.live/discord) has a showcase channel for finished map art and a support forum for build plans, and it is where every new build is announced. Take the @updates role there if you want a ping when one ships. The same release notes are on the [release notes](../changelog/) page and in an [Atom feed](https://b8b7.live/arachne/feed.xml) for any feed reader."
+-      ]
+-    },
+-    {
+-      "id": "help",
+-      "q": "Where do I ask for help or report a bug?",
+-      "a": [
+-        "The community Discord at [b8b7.live/discord](https://b8b7.live/discord) has a support forum where every question is its own post, and attaching your settings export puts your whole setup in front of whoever answers. You do not need to join anything to report a bug. Email [arachne@b8b7.live](mailto:arachne@b8b7.live) or [open an issue on GitHub](https://github.com/b8b7lives/arachne/issues). Either way, say which build you are running. Its id sits in the app's footer and one click copies it, and here it is again, {{build id}}, one click to copy as well."
+-      ]
+-    },
+     {
+       "id": "contribute",
+       "q": "Is the source open, and can I contribute?",
+       "a": [
+         "The source is under GPL-3.0. The footer of the app links an archive of the exact build you are running, and the [GitHub mirror](https://github.com/b8b7lives/arachne) carries one commit per published build. Development happens outside the mirror, so a pull request has no branch to merge into, and a patch attached to an issue is read and carried into the next build with credit if it fits."
+       ]
+-    },
+-    {
+-      "id": "support",
+-      "q": "Can I support the project?",
+-      "a": [
+-        "Arachne is free and stays free. It runs on hardware I own and pay for, so [Ko-fi](https://ko-fi.com/b8b7live) goes toward the server and hosting costs. Showing a finished build in the Discord is the other thing that helps."
+-      ]
+-    },
+-    {
+-      "id": "other-work",
+-      "q": "Where can I find other things by b8b7?",
+-      "a": [
+-        "The landing page at [b8b7.live](https://b8b7.live/) collects them. Minecraft mods live on [Modrinth](https://modrinth.com/user/b8b7) with a CurseForge mirror, the source for public projects is on [GitHub](https://github.com/b8b7lives), and the Discord is shared with Arachne."
+-      ]
+     }
+   ]
+ }
+diff --git a/web/src/main.ts b/web/src/main.ts
+index 03b3aef..3d860b8 100644
+--- a/web/src/main.ts
++++ b/web/src/main.ts
+@@ -1,5 +1,6 @@
+ import { extractPreset, type PresetTable, presetToPalette } from "./mapartcraft";
+ import { initMobile, isNarrow, registerWorker, touchDefaults } from "./mobile";
++import { initShell } from "./shell";
+ import {
+   type BlockIndex,
+   buildBlockIndex,
+@@ -158,7 +159,8 @@ const enabled = new Set<number>();
+ let previewZoom = 1;
+ let previewHidden = false;
+ let previewInline = false;
+-const COLLAPSIBLE = ["loadout-panel", "io-panel", "solver-panel", "summary-panel"];
++// Whole-section collapse is retired: each section is a workspace tab now.
++const COLLAPSIBLE: string[] = [];
+ const collapsedSubs = new Set<string>();
+ 
+ function seedClosedSubs() {
+@@ -535,7 +537,7 @@ function builtinPalettes(): PalettePreset[] {
+       picks: {},
+       toggles: blockFilterDefaults(),
+     },
+-    pinnedPreset("builtin:b8b7", "b8b7's choice", B8B7_PICKS),
++    pinnedPreset("builtin:b8b7", "recommended picks", B8B7_PICKS),
+     familyPreset("builtin:carpet", "carpets only", (b) => b.endsWith("_carpet")),
+     familyPreset(
+       "builtin:concrete",
+@@ -2479,62 +2481,6 @@ function syncFillerUi() {
+     `${FILLER_MODE_SHORT[mode] ?? mode} · ${e ? e.b.display_name : id}${late}`;
+ }
+ 
+-interface Partner {
+-  id: string;
+-  name: string;
+-  url: string;
+-  logo: string;
+-  line: string;
+-  sub: string | null;
+-  caption: string | null;
+-}
+-
+-async function initCommunities() {
+-  try {
+-    const res = await fetch(`${import.meta.env.BASE_URL}partners.json`);
+-    if (!res.ok) return;
+-    const data = (await res.json()) as { partners: Partner[] };
+-    if (!data.partners?.length) return;
+-    const cards = $("communities-cards");
+-    cards.replaceChildren(
+-      ...data.partners.map((c) => {
+-        const a = document.createElement("a");
+-        a.className = "community-card";
+-        a.href = c.url;
+-        a.target = "_blank";
+-        a.rel = "noopener noreferrer";
+-        const img = document.createElement("img");
+-        img.className = "community-logo";
+-        img.src = `${import.meta.env.BASE_URL}${c.logo}`;
+-        img.alt = c.name;
+-        const text = document.createElement("div");
+-        text.className = "community-text";
+-        const line = document.createElement("p");
+-        line.className = "community-line";
+-        line.textContent = c.line;
+-        text.append(line);
+-        if (c.caption) {
+-          const cap = document.createElement("p");
+-          cap.className = "community-caption";
+-          cap.textContent = c.caption;
+-          text.append(cap);
+-        }
+-        if (c.sub) {
+-          const sub = document.createElement("p");
+-          sub.className = "community-sub";
+-          sub.textContent = c.sub;
+-          text.append(sub);
+-        }
+-        a.append(img, text);
+-        return a;
+-      }),
+-    );
+-    $("communities").hidden = false;
+-  } catch {
+-    void 0;
+-  }
+-}
+-
+ function syncMaterialsScope() {
+   const sel = $("materials-basis") as HTMLSelectElement;
+   const n = tileMaterials?.length ?? 0;
+@@ -2815,43 +2761,25 @@ let elCanvas: HTMLCanvasElement;
+ let elGrid: HTMLElement;
+ let lastPreview: ImageData | null = null;
+ 
+-let railWidth = 320;
++const PREVIEW_PAD = 16;
++let previewScaleFrame = 0;
+ 
++// The preview slot is the stage: "fit" sizes the map to the whole slot, zoom multiplies that
++// size, and anything bigger than the slot scrolls inside it.
+ function applyPreviewScale() {
+   const panel = $("preview-panel");
+-  const inline = previewInline && !pipWindow;
+-  const zooming = !pipWindow && !inline && previewZoom > 1;
+-  if (!pipWindow && !inline && !zooming) {
+-    panel.classList.remove("zoomed");
+-    panel.style.setProperty("--zoom-left", "0px");
+-    panel.style.setProperty("--zoom-right", "0px");
+-    railWidth = $("preview-slot").clientWidth || railWidth;
+-  }
+-  let avail: number;
+-  let rightRoom = 0;
++  const slot = $("preview-slot");
++  panel.classList.remove("zoomed");
++  const aspect = elCanvas.width / Math.max(1, elCanvas.height);
++  let fit: number;
+   if (pipWindow) {
+-    avail = Math.max(64, pipWindow.document.body.clientWidth - 16);
+-  } else if (inline) {
+-    avail = $("preview-slot").clientWidth || railWidth;
+-  } else if (zooming) {
+-    const mainEl = panel.parentElement as HTMLElement;
+-    rightRoom = Math.max(
+-      0,
+-      Math.round(window.innerWidth - mainEl.getBoundingClientRect().right - 16),
+-    );
+-    const room = mainEl.clientWidth - 48 + rightRoom;
+-    const aspect = elCanvas.width / Math.max(1, elCanvas.height);
+-    const byHeight = Math.round((window.innerHeight - 160) * aspect);
+-    avail = Math.max(railWidth, Math.min(room, byHeight));
++    fit = Math.max(64, pipWindow.document.body.clientWidth - 16);
+   } else {
+-    avail = railWidth;
++    const w = Math.max(64, slot.clientWidth - 2 * PREVIEW_PAD);
++    const h = Math.max(64, slot.clientHeight - 2 * PREVIEW_PAD);
++    fit = Math.max(64, Math.min(w, h * aspect));
+   }
+-  const target = pipWindow ? avail : Math.min(railWidth * previewZoom, avail);
+-  const extra = zooming ? Math.max(0, Math.ceil(target) - railWidth) : 0;
+-  const right = Math.min(rightRoom, extra);
+-  panel.classList.toggle("zoomed", extra > 0);
+-  panel.style.setProperty("--zoom-left", `${extra - right}px`);
+-  panel.style.setProperty("--zoom-right", `${right}px`);
++  const target = pipWindow ? fit : Math.max(16, fit * previewZoom);
+   const scale = target / elCanvas.width;
+   const w = Math.max(1, Math.round(elCanvas.width * scale));
+   const h = Math.max(1, Math.round(elCanvas.height * scale));
+@@ -2884,7 +2812,6 @@ function renderGridNames(cell: number) {
+ }
+ 
+ function syncPlacement() {
+-  document.body.classList.toggle("preview-inline", previewInline);
+   const b = $("preview-place") as HTMLButtonElement;
+   b.textContent = previewInline ? "back to the rail" : "into the page";
+   b.title = previewInline
+@@ -4141,7 +4068,6 @@ async function boot() {
+   const restored = saved ? " · your saved palette restored" : "";
+   const nostore = persistenceAvailable ? "" : " · settings can't be saved in this browser";
+   status(`ready: Minecraft 26.2, ${blocks.length} blocks${restored}${nostore}`);
+-  void initCommunities();
+   await refreshSolver();
+ 
+   await consumeShareHash();
+@@ -4460,6 +4386,10 @@ async function boot() {
+     persist();
+   };
+   window.addEventListener("resize", () => applyPreviewScale());
++  new ResizeObserver(() => {
++    cancelAnimationFrame(previewScaleFrame);
++    previewScaleFrame = requestAnimationFrame(() => applyPreviewScale());
++  }).observe($("preview-slot"));
+   $("grid-overlay").onchange = () => {
+     applyPreviewScale();
+     persist();
+@@ -4565,6 +4495,7 @@ async function boot() {
+ 
+ void boot()
+   .then(() => {
++    initShell();
+     initMobile();
+     registerWorker(import.meta.env.BASE_URL);
+   })
+diff --git a/web/src/mobile.ts b/web/src/mobile.ts
+index 07699ca..27e974e 100644
+--- a/web/src/mobile.ts
++++ b/web/src/mobile.ts
+@@ -2,7 +2,6 @@ const KEY_EXPLAIN = "arachne.explain";
+ const $ = (id: string) => document.getElementById(id);
+ 
+ export const isTouch = (): boolean => matchMedia("(pointer: coarse)").matches;
+-export const isPhone = (): boolean => matchMedia("(max-width: 40rem)").matches;
+ export const isNarrow = (): boolean => matchMedia("(max-width: 900px)").matches;
+ 
+ let explainOn = false;
+@@ -11,9 +10,9 @@ let explainTimer: ReturnType<typeof setTimeout> | undefined;
+ function readExplain(): boolean {
+   try {
+     const v = localStorage.getItem(KEY_EXPLAIN);
+-    return v === null ? true : v === "1";
++    return v === null ? false : v === "1";
+   } catch {
+-    return true;
++    return false;
+   }
+ }
+ 
+@@ -98,7 +97,7 @@ function explainBar(): void {
+   box.checked = explainOn;
+   label.append(box, " explain controls");
+   bar.append(label);
+-  $("about-panel")?.after(bar);
++  $("explain-slot")?.append(bar);
+   box.onchange = () => {
+     explainOn = box.checked;
+     writeExplain(explainOn);
+@@ -119,32 +118,6 @@ function explainBar(): void {
+   applyExplain();
+ }
+ 
+-function jumpBar(): void {
+-  const bar = document.createElement("nav");
+-  bar.id = "jump-bar";
+-  for (const [id, text] of [
+-    ["source-panel", "Source"],
+-    ["solver-panel", "Palette"],
+-    ["summary-panel", "Summary"],
+-    ["export-panel", "Download"],
+-  ]) {
+-    const a = document.createElement("a");
+-    a.href = `#${id}`;
+-    a.textContent = text;
+-    bar.append(a);
+-  }
+-  document.body.append(bar);
+-  document.body.classList.add("has-jump-bar");
+-}
+-
+-function collapseAbout(): void {
+-  const about = $("about-panel");
+-  const h2 = about?.querySelector("h2");
+-  if (!about || !h2) return;
+-  about.classList.add("collapsed");
+-  h2.onclick = () => about.classList.toggle("collapsed");
+-}
+-
+ function touchHints(): void {
+   const file = $("file");
+   if (file && !$("skip-hint")) {
+@@ -180,8 +153,6 @@ export function initMobile(): void {
+   explainOn = readExplain();
+   shareButton();
+   touchHints();
+-  if (isPhone()) collapseAbout();
+-  if (isNarrow()) jumpBar();
+   explainBar();
+ }
+ 
+diff --git a/web/src/shell.css b/web/src/shell.css
+new file mode 100644
+index 0000000..986f8b7
+--- /dev/null
++++ b/web/src/shell.css
+@@ -0,0 +1,1109 @@
++/* OnePiece Team Map Art: workspace shell.
++   Loaded after style.css. Layout, chrome and control language only; component internals
++   (palette, loadout, text editor) keep their own rules in style.css. */
++
++:root {
++  --hdr: 56px;
++  --tabs: 44px;
++  --dock: 56px;
++  --chrome: calc(var(--hdr) + var(--tabs));
++  --pad: 16px;
++  --tap: 44px;
++}
++
++html {
++  scroll-padding-top: calc(var(--chrome) + 8px);
++  background: var(--bg);
++}
++body {
++  margin: 0;
++  background: var(--bg);
++  color: var(--ink);
++  font: 400 var(--t-body) / 1.5 var(--font-ui);
++  overflow-x: hidden;
++}
++a {
++  color: var(--b);
++}
++:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
++  outline: 2px solid var(--focus);
++  outline-offset: 2px;
++}
++
++/* ------------------------------------------------------------------ app bar */
++.appbar {
++  position: sticky;
++  top: 0;
++  z-index: 40;
++  display: flex;
++  align-items: center;
++  gap: 12px;
++  height: var(--hdr);
++  padding: 0 var(--pad);
++  background: rgba(7, 9, 10, 0.96);
++  border-bottom: 1px solid var(--rule);
++}
++.back {
++  flex: none;
++  display: inline-flex;
++  align-items: center;
++  gap: 8px;
++  min-height: var(--tap);
++  padding: 0 14px 0 10px;
++  border: 1px solid var(--rule);
++  color: var(--ink);
++  text-decoration: none;
++  font: 600 14px / 1 var(--font-ui);
++  white-space: nowrap;
++  transition:
++    border-color 150ms,
++    color 150ms,
++    transform 100ms var(--ease);
++}
++.back:hover {
++  border-color: var(--g);
++  color: var(--g);
++}
++.back:active {
++  transform: scale(0.97);
++}
++.appbar-title {
++  display: flex;
++  align-items: center;
++  gap: 12px;
++  min-width: 0;
++}
++.appbar-logo {
++  display: block;
++  height: 28px;
++  width: auto;
++  mix-blend-mode: lighten;
++}
++.appbar h1 {
++  display: flex;
++  align-items: baseline;
++  gap: 8px;
++  margin: 0;
++  min-width: 0;
++  white-space: nowrap;
++}
++.appbar-app {
++  font: 900 28px / 1 var(--font-display);
++  text-transform: uppercase;
++  letter-spacing: 0.015em;
++}
++.appbar-sep {
++  color: var(--rule);
++  font: 400 14px var(--font-mono);
++}
++.appbar-by {
++  font: 400 13px var(--font-mono);
++  color: var(--dim);
++}
++.beta-chip {
++  margin: 0 0 0 4px;
++  padding: 1px 6px;
++  border: 1px solid var(--edge-control);
++  border-radius: var(--r);
++  font: 400 11px / 1.4 var(--font-mono);
++  letter-spacing: 0.04em;
++  color: var(--warn);
++}
++.appbar-spacer {
++  flex: 1 1 0;
++}
++.ver {
++  display: inline-flex;
++  align-items: center;
++  gap: 8px;
++}
++.ver-label {
++  font: 400 11px var(--font-mono);
++  letter-spacing: 0.1em;
++  text-transform: uppercase;
++  color: var(--dim);
++}
++.ver select {
++  min-height: 40px;
++  min-width: 5.5rem;
++}
++.status {
++  margin: 0;
++  max-width: 24ch;
++  overflow: hidden;
++  text-overflow: ellipsis;
++  white-space: nowrap;
++  font: 400 12px var(--font-mono);
++  color: var(--dim);
++}
++.help {
++  position: relative;
++}
++.help-btn {
++  display: inline-flex;
++  align-items: center;
++  gap: 8px;
++  min-height: var(--tap);
++  min-width: var(--tap);
++  justify-content: center;
++  padding: 0 12px;
++  background: none;
++  border: 1px solid var(--rule);
++  border-radius: 0;
++  color: var(--ink);
++  font: 600 14px var(--font-ui);
++}
++.help-btn:hover,
++.help-btn[aria-expanded="true"] {
++  border-color: var(--g);
++  color: var(--g);
++}
++.help-menu {
++  position: absolute;
++  right: 0;
++  top: calc(100% + 6px);
++  z-index: 70;
++  min-width: 16rem;
++  background: var(--graphite);
++  border: 1px solid var(--edge-control);
++  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
++}
++.help-menu[hidden] {
++  display: none;
++}
++.help-menu a {
++  display: flex;
++  align-items: center;
++  min-height: var(--tap);
++  padding: 0 16px;
++  color: var(--ink);
++  text-decoration: none;
++  font: 400 14px var(--font-ui);
++  border-top: 1px solid var(--edge-soft);
++}
++.help-menu a:first-child {
++  border-top: 0;
++}
++.help-menu a:hover,
++.help-menu a:focus-visible {
++  background: rgba(57, 255, 136, 0.08);
++  color: var(--g);
++}
++
++/* ------------------------------------------------------------------ workspace tabs */
++.tabbar {
++  position: sticky;
++  top: var(--hdr);
++  z-index: 39;
++  display: flex;
++  height: var(--tabs);
++  padding: 0 var(--pad);
++  background: var(--bg);
++  border-bottom: 1px solid var(--rule);
++}
++.tab {
++  display: inline-flex;
++  align-items: center;
++  gap: 8px;
++  height: 100%;
++  padding: 0 18px;
++  margin: 0 0 -1px;
++  background: none;
++  border: 0;
++  border-bottom: 2px solid transparent;
++  border-radius: 0;
++  color: var(--dim);
++  font: 600 14px var(--font-ui);
++  transition:
++    color 150ms,
++    border-color 150ms;
++}
++.tab:hover {
++  color: var(--ink);
++}
++.tab[aria-selected="true"] {
++  color: var(--ink);
++  border-bottom-color: var(--g);
++}
++.tab .ico {
++  flex: none;
++}
++.tab-en {
++  display: none;
++}
++
++.help-opt:empty {
++  display: none;
++}
++.help-opt {
++  border-top: 1px solid var(--edge-soft);
++}
++#explain-bar {
++  display: flex;
++  align-items: center;
++  min-height: var(--tap);
++  padding: 0 16px;
++  font-size: 14px;
++  color: var(--ink);
++}
++#explain-bar label {
++  gap: 10px;
++  min-height: var(--tap);
++  cursor: pointer;
++}
++
++/* ------------------------------------------------------------------ workspace */
++main#workspace {
++  display: block;
++  max-width: none;
++  padding: 0;
++}
++.view[hidden] {
++  display: none;
++}
++section {
++  min-width: 0;
++}
++
++/* section titles */
++h2 {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: baseline;
++  gap: 4px 10px;
++  margin: 0 calc(-1 * var(--pad)) 8px;
++  padding: 16px var(--pad) 12px;
++  background: none;
++  border: 0;
++  border-bottom: 1px solid var(--rule);
++  border-radius: 0;
++  font: 900 26px / 1 var(--font-display);
++  text-transform: uppercase;
++  letter-spacing: 0.02em;
++}
++h2 > .dim {
++  font: 400 12px var(--font-mono);
++  letter-spacing: 0.04em;
++  text-transform: none;
++  color: var(--dim);
++}
++
++/* ------------------------------------------------------------------ studio: three panels */
++.studio {
++  display: grid;
++  grid-template-columns: minmax(300px, 340px) minmax(0, 1fr) minmax(300px, 340px);
++  height: calc(100vh - var(--chrome));
++  /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh fallback for browsers without dvh */
++  height: calc(100dvh - var(--chrome));
++  min-height: 560px;
++}
++.col {
++  min-width: 0;
++  min-height: 0;
++  background: var(--panel);
++}
++.col-left,
++.col-right {
++  overflow-y: auto;
++  overscroll-behavior: contain;
++  scrollbar-width: thin;
++  scrollbar-color: var(--edge-control) transparent;
++}
++.col-left {
++  border-right: 1px solid var(--rule);
++}
++.col-right {
++  border-left: 1px solid var(--rule);
++}
++.col-center {
++  display: flex;
++  flex-direction: column;
++  background: var(--bg);
++}
++.col section {
++  background: none;
++  border: 0;
++  border-radius: 0;
++  padding: 0 var(--pad) 28px;
++  overflow: visible;
++}
++.col-left h2,
++.col-right h2 {
++  position: sticky;
++  top: 0;
++  z-index: 3;
++  background: var(--panel);
++}
++
++/* preview stage */
++#preview-panel {
++  position: static;
++  align-self: stretch;
++  width: 100%;
++  display: flex;
++  flex-direction: column;
++  flex: 1 1 auto;
++  min-height: 0;
++  padding: 0;
++  max-width: none;
++  background: var(--bg);
++}
++.pv-bar {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 8px 16px;
++  padding: 8px var(--pad);
++  background: var(--panel);
++  border-bottom: 1px solid var(--rule);
++}
++.pv-bar h2 {
++  flex: 1 1 auto;
++  margin: 0;
++  padding: 0;
++  border: 0;
++  font-size: 22px;
++  position: static;
++  background: none;
++}
++.pv-tools {
++  display: flex;
++  align-items: center;
++  gap: 6px;
++  margin: 0;
++}
++.pv-tools .icon {
++  min-width: 40px;
++  font-size: 18px;
++  line-height: 1;
++}
++.chip-toggle {
++  min-height: 36px;
++  padding: 0 12px;
++  border: 1px solid var(--edge-control);
++  background: var(--graphite);
++  font: 600 13px var(--font-ui);
++  color: var(--ink);
++  cursor: pointer;
++}
++.chip-toggle:has(input:checked) {
++  border-color: var(--g);
++  color: var(--g);
++}
++#preview-place {
++  display: none;
++}
++.progress {
++  flex: none;
++  height: 3px;
++  margin: 0;
++  background: var(--edge-soft);
++}
++#preview-slot {
++  position: relative;
++  flex: 1 1 auto;
++  min-height: 0;
++  display: flex;
++  padding: 16px;
++  overflow: auto;
++  overscroll-behavior: contain;
++  background:
++    linear-gradient(rgba(57, 255, 136, 0.035) 1px, transparent 1px) 0 0 / 32px 32px,
++    linear-gradient(90deg, rgba(57, 255, 136, 0.035) 1px, transparent 1px) 0 0 / 32px 32px,
++    var(--void);
++}
++#preview-wrap {
++  position: relative;
++  display: block;
++  flex: none;
++  margin: auto;
++}
++#preview {
++  border: 1px solid var(--edge-control);
++}
++#preview-empty {
++  background: rgba(13, 17, 19, 0.7);
++  border-width: 1px;
++  border-color: var(--edge-control);
++  font: 600 14px var(--font-ui);
++}
++.preview-empty-mark {
++  font: 300 44px / 1 var(--font-ui);
++}
++#preview-away {
++  margin: 16px;
++}
++#preview-hint {
++  display: none;
++}
++.panel-utility {
++  margin: 0;
++  padding: 10px var(--pad);
++  background: var(--panel);
++  border-top: 1px solid var(--rule);
++}
++.panel-utility .utility-row {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 8px;
++  margin: 0;
++}
++.panel-utility .utility-row .danger {
++  margin-left: auto;
++}
++#preview-panel.hidden-preview {
++  flex: 0 0 auto;
++}
++#preview-panel.hidden-preview #preview-slot,
++#preview-panel.hidden-preview .progress {
++  display: none;
++}
++
++/* ------------------------------------------------------------------ accordion sections */
++.subsection {
++  margin: 0;
++  padding: 0;
++  border-bottom: 1px solid var(--rule);
++}
++.subsection:last-child {
++  border-bottom: 0;
++}
++.sub-head {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 4px 8px;
++  min-height: 48px;
++  margin: 0;
++  padding: 0;
++  border: 0;
++  font: 600 12px / 1.3 var(--font-mono);
++  letter-spacing: 0.1em;
++  text-transform: uppercase;
++  color: var(--ink);
++}
++.sub-head label {
++  min-height: var(--tap);
++  font: inherit;
++  cursor: pointer;
++}
++.sub-head .mini {
++  letter-spacing: 0;
++  text-transform: none;
++}
++.sub-head .fold {
++  order: 99;
++  margin-left: auto;
++  width: var(--tap);
++  height: var(--tap);
++  margin-right: -10px;
++  background: none;
++  border: 0;
++  border-radius: 0;
++  color: var(--dim);
++  font-size: 14px;
++  transition:
++    transform 150ms var(--ease),
++    color 150ms;
++}
++.sub-head .fold:hover {
++  color: var(--g);
++}
++.subsection.collapsed .fold {
++  transform: rotate(-90deg);
++}
++.subsection:not(.collapsed) > .sub-head {
++  color: var(--g);
++}
++.subsection > :not(.sub-head) {
++  margin-bottom: 4px;
++}
++.subsection:not(.collapsed) {
++  padding-bottom: 14px;
++}
++.group-label {
++  margin: 12px 0 2px;
++  font: 400 11px var(--font-mono);
++  letter-spacing: 0.1em;
++  text-transform: uppercase;
++  color: var(--dim);
++}
++
++/* ------------------------------------------------------------------ controls in panels */
++.col .ctl,
++.col .ctl-range {
++  grid-template-columns: minmax(0, 1fr);
++  row-gap: 4px;
++  padding: 8px 0;
++  border-top: 0;
++}
++.col .ctl > .field-name {
++  font: 600 11px var(--font-mono);
++  letter-spacing: 0.08em;
++  text-transform: uppercase;
++  color: var(--dim);
++}
++.col .ctl-range {
++  grid-template-columns: minmax(0, 1fr) var(--field-num) auto;
++  grid-template-areas: "name num unit" "range range range";
++  column-gap: 8px;
++}
++.col .ctl-range > .field-name {
++  grid-area: name;
++}
++.col .ctl-range > input[type="range"] {
++  grid-area: range;
++}
++.col .ctl-range > .slider-num {
++  grid-area: num;
++}
++.col .ctl-range > .field-unit {
++  grid-area: unit;
++  min-width: 1.5rem;
++}
++.col .ctl-body {
++  gap: 8px;
++}
++.col .ctl-body > .note {
++  margin-left: 0;
++}
++.col .ctl-body select,
++.col .ctl-body input[type="text"] {
++  max-width: 100%;
++}
++.col .ctl-wide {
++  grid-template-columns: minmax(0, 1fr);
++}
++input,
++select,
++textarea,
++button {
++  font-family: inherit;
++}
++input[type="text"],
++input[type="number"],
++select,
++textarea {
++  min-height: 40px;
++  padding: 6px 10px;
++  background: var(--void);
++  border: 1px solid var(--edge-control);
++  border-radius: var(--r);
++  color: var(--ink);
++  font-size: 14px;
++}
++input[type="number"] {
++  width: 5rem;
++}
++input[type="range"] {
++  width: 100%;
++  min-height: 32px;
++  padding: 0;
++  accent-color: var(--g);
++  background: none;
++  border: 0;
++}
++input[type="checkbox"],
++input[type="radio"] {
++  width: 18px;
++  height: 18px;
++  padding: 0;
++  accent-color: var(--g);
++}
++input[type="color"] {
++  width: 44px;
++  height: 40px;
++  padding: 2px;
++}
++button {
++  border-radius: var(--r);
++  transition:
++    border-color 150ms,
++    color 150ms,
++    background 150ms,
++    transform 100ms var(--ease);
++}
++button:active:not(:disabled) {
++  transform: scale(0.97);
++}
++button.mini,
++.mini {
++  min-height: 36px;
++  padding: 0 12px;
++  background: var(--graphite);
++  border: 1px solid var(--edge-control);
++  color: var(--ink);
++  font: 600 13px / 1 var(--font-ui);
++  text-decoration: none;
++}
++a.mini {
++  display: inline-flex;
++  align-items: center;
++}
++button.mini:hover:not(:disabled),
++a.mini:hover {
++  border-color: var(--g);
++  color: var(--g);
++}
++button.mini.danger {
++  color: var(--bad);
++}
++button.mini.danger:hover:not(:disabled) {
++  color: var(--ink);
++}
++.pick-btn {
++  width: 100%;
++  min-height: 48px;
++  margin: 12px 0 4px;
++  background: rgba(57, 255, 136, 0.05);
++  border: 1px dashed var(--g);
++  color: var(--g);
++  font: 600 15px var(--font-ui);
++}
++.pick-btn:hover {
++  background: rgba(57, 255, 136, 0.12);
++}
++.ctl:has(#file) {
++  display: none;
++}
++#text-text {
++  min-height: 72px;
++}
++.note,
++.dim,
++.field-unit {
++  font-size: var(--t-small);
++}
++
++/* ------------------------------------------------------------------ tools / palette / export views */
++.view:not(#view-studio) {
++  max-width: 1280px;
++  margin: 0 auto;
++  padding: 20px var(--pad) 40px;
++}
++.view:not(#view-studio) section {
++  background: var(--panel);
++  border: 1px solid var(--rule);
++  padding: 0 20px 20px;
++}
++.view:not(#view-studio) h2 {
++  margin: 0 -20px 12px;
++  padding: 16px 20px 12px;
++}
++main#workspace .two > section,
++main#workspace .view > section {
++  grid-column: auto;
++  grid-row: auto;
++  position: static;
++  max-width: none;
++}
++.two {
++  display: grid;
++  gap: 16px;
++  grid-template-columns: minmax(0, 1fr);
++  align-items: start;
++}
++#export-download {
++  min-height: 52px;
++  padding: 0 28px;
++  background: var(--g);
++  border: 0;
++  color: var(--accent-ink);
++  font: 900 22px / 1 var(--font-display);
++  letter-spacing: 0.03em;
++  text-transform: uppercase;
++}
++#export-download:hover:not(:disabled) {
++  background: #7dffae;
++}
++#export-download:disabled {
++  background: var(--graphite);
++  color: var(--dimmer);
++  opacity: 1;
++}
++#view-build-export,
++#export-share {
++  min-height: 52px;
++  padding: 0 20px;
++  background: none;
++  border: 1px solid var(--edge-control);
++  font: 600 15px var(--font-ui);
++}
++#view-build-export:hover:not(:disabled),
++#export-share:hover:not(:disabled) {
++  border-color: var(--g);
++  color: var(--g);
++}
++
++.pal-search {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 6px 12px;
++  margin: 8px 0 12px;
++}
++.pal-search input {
++  flex: 1 1 14rem;
++  max-width: 24rem;
++}
++.pal-hide {
++  display: none !important;
++}
++
++/* transparency only matters for a see-through source; the app hides the row otherwise */
++#color-section:has(> #background-row[hidden]) {
++  display: none;
++}
++
++/* mapdata mode hides what no longer applies; keep the new wrappers in step */
++.mode-mapdata #height-section,
++.mode-mapdata #stair-section,
++.mode-mapdata #maxh-section,
++.mode-mapdata #build-section {
++  display: none;
++}
++
++/* ------------------------------------------------------------------ footer */
++footer {
++  padding: 20px var(--pad) 28px;
++  border-top: 1px solid var(--rule);
++  font-size: var(--t-small);
++  color: var(--dim);
++}
++footer p {
++  margin: 4px 0;
++}
++footer a {
++  color: var(--dim);
++}
++footer a:hover {
++  color: var(--g);
++}
++
++/* ------------------------------------------------------------------ sheets (below 1100px) */
++.sheet-bar,
++.studio-dock,
++.sheet-backdrop {
++  display: none;
++}
++@media (max-width: 1099.98px) {
++  .studio {
++    display: block;
++    height: auto;
++    min-height: 0;
++  }
++  .col-center {
++    height: calc(100vh - var(--chrome) - var(--dock));
++    /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh fallback for browsers without dvh */
++    height: calc(100dvh - var(--chrome) - var(--dock));
++    min-height: 380px;
++  }
++  .studio-dock {
++    display: grid;
++    grid-template-columns: 1fr 1fr;
++    height: var(--dock);
++    background: var(--panel);
++    border-top: 1px solid var(--rule);
++  }
++  .dock-btn {
++    min-height: var(--dock);
++    background: none;
++    border: 0;
++    border-radius: 0;
++    color: var(--ink);
++    font: 600 15px var(--font-ui);
++  }
++  .dock-btn + .dock-btn {
++    border-left: 1px solid var(--rule);
++  }
++  .dock-btn span {
++    margin-left: 6px;
++    font: 400 11px var(--font-mono);
++    color: var(--dim);
++  }
++  .dock-btn[aria-pressed="true"] {
++    color: var(--g);
++  }
++  .col-left,
++  .col-right {
++    position: fixed;
++    inset: auto 0 0 0;
++    z-index: 60;
++    max-width: 720px;
++    max-height: 86vh;
++    /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh fallback for browsers without dvh */
++    max-height: 86dvh;
++    margin: 0 auto;
++    border: 1px solid var(--edge-control);
++    border-bottom: 0;
++    box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.55);
++    transform: translateY(104%);
++    visibility: hidden;
++    transition:
++      transform 220ms var(--ease),
++      visibility 0s linear 220ms;
++    outline: none;
++  }
++  body[data-pane="left"] .col-left,
++  body[data-pane="right"] .col-right {
++    transform: none;
++    visibility: visible;
++    transition: transform 220ms var(--ease);
++  }
++  .col-left > section > h2,
++  .col-right > section > h2 {
++    display: none;
++  }
++  .col section {
++    padding-bottom: calc(24px + env(safe-area-inset-bottom));
++  }
++  .sheet-bar {
++    position: sticky;
++    top: 0;
++    z-index: 4;
++    display: flex;
++    align-items: center;
++    justify-content: space-between;
++    gap: 12px;
++    padding: 0 var(--pad);
++    min-height: 52px;
++    background: var(--panel);
++    border-bottom: 1px solid var(--rule);
++  }
++  .sheet-title {
++    font: 900 22px / 1 var(--font-display);
++    text-transform: uppercase;
++    letter-spacing: 0.02em;
++  }
++  .sheet-close {
++    min-height: var(--tap);
++    min-width: 72px;
++    padding: 0 16px;
++    background: var(--g);
++    border: 0;
++    color: var(--accent-ink);
++    font: 600 14px var(--font-ui);
++  }
++  .sheet-backdrop {
++    position: fixed;
++    inset: 0;
++    z-index: 50;
++    background: rgba(0, 0, 0, 0.62);
++  }
++  .sheet-backdrop[hidden] {
++    display: none;
++  }
++  body.sheet-open {
++    overflow: hidden;
++  }
++}
++
++@media (max-width: 899.98px) {
++  .appbar-logo,
++  .ver-label,
++  .help-label {
++    display: none;
++  }
++  .status {
++    max-width: 12ch;
++  }
++  .help-btn {
++    padding: 0;
++    min-width: var(--tap);
++  }
++}
++@media (min-width: 1000px) {
++  .two {
++    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
++  }
++  .two-export {
++    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
++  }
++}
++@media (min-width: 1440px) {
++  .studio {
++    grid-template-columns: 360px minmax(0, 1fr) 380px;
++  }
++}
++
++/* ------------------------------------------------------------------ phones */
++@media (max-width: 719.98px) {
++  :root {
++    --hdr: 82px;
++    --tabs: 0px;
++    --tabs-m: calc(58px + env(safe-area-inset-bottom));
++    --pad: 14px;
++  }
++  body {
++    padding-bottom: var(--tabs-m);
++  }
++  .appbar {
++    display: grid;
++    grid-template-columns: auto minmax(0, 1fr) auto auto;
++    grid-template-rows: 48px 26px;
++    grid-template-areas: "back . ver help" "title title title status";
++    align-items: center;
++    column-gap: 8px;
++    row-gap: 0;
++    padding: 5px var(--pad) 3px;
++  }
++  .back {
++    grid-area: back;
++    padding: 0 12px 0 8px;
++    font-size: 13px;
++  }
++  .appbar-spacer {
++    display: none;
++  }
++  .appbar-title {
++    grid-area: title;
++  }
++  .appbar-logo,
++  .appbar-sep,
++  .ver-label,
++  .help-label {
++    display: none;
++  }
++  .appbar-app {
++    font-size: 22px;
++  }
++  .ver {
++    grid-area: ver;
++  }
++  .ver select {
++    min-width: 4.6rem;
++    max-width: 7.5rem;
++  }
++  .help {
++    grid-area: help;
++  }
++  .help-btn {
++    padding: 0;
++    min-width: var(--tap);
++  }
++  .status {
++    grid-area: status;
++    justify-self: end;
++    max-width: 18ch;
++    font-size: 11px;
++  }
++  .tabbar {
++    position: fixed;
++    top: auto;
++    bottom: 0;
++    left: 0;
++    right: 0;
++    z-index: 45;
++    height: var(--tabs-m);
++    padding: 0 0 env(safe-area-inset-bottom);
++    border-top: 1px solid var(--rule);
++    border-bottom: 0;
++    background: rgba(13, 17, 19, 0.98);
++  }
++  .tab {
++    flex: 1 1 0;
++    flex-direction: column;
++    justify-content: center;
++    gap: 3px;
++    padding: 0 4px;
++    margin: 0;
++    border-bottom: 0;
++    border-top: 2px solid transparent;
++    font-size: 12px;
++  }
++  .tab[aria-selected="true"] {
++    border-top-color: var(--g);
++    color: var(--g);
++  }
++  .col-center {
++    height: calc(100vh - var(--hdr) - var(--tabs-m) - var(--dock));
++    /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh fallback for browsers without dvh */
++    height: calc(100dvh - var(--hdr) - var(--tabs-m) - var(--dock));
++    min-height: 320px;
++  }
++  .pv-bar {
++    gap: 6px 10px;
++    padding: 6px var(--pad);
++  }
++  .pv-bar h2 {
++    flex: 0 0 auto;
++    font-size: 18px;
++  }
++  .pv-bar h2 > .dim {
++    display: none;
++  }
++  .pv-bar .preview-zoom {
++    margin-left: auto;
++  }
++  .panel-utility .utility-row a.jump {
++    display: none;
++  }
++  :root {
++    --dock: 50px;
++  }
++  .preview-controls,
++  #preview-hint {
++    display: none;
++  }
++  #preview-slot {
++    padding: 10px;
++  }
++  .panel-utility {
++    padding: 8px var(--pad);
++  }
++  .view:not(#view-studio) {
++    padding: 12px 10px 28px;
++  }
++  .view:not(#view-studio) section {
++    padding: 0 14px 16px;
++  }
++  .view:not(#view-studio) h2 {
++    margin: 0 -14px 10px;
++    padding: 14px;
++    font-size: 24px;
++  }
++  .col-left,
++  .col-right {
++    max-height: 88vh;
++    /* biome-ignore lint/suspicious/noDuplicateProperties: 100vh fallback for browsers without dvh */
++    max-height: 88dvh;
++  }
++  #export-download,
++  #view-build-export,
++  #export-share {
++    flex: 1 1 100%;
++  }
++  footer {
++    padding-bottom: 20px;
++  }
++}
++
++@media (pointer: coarse) {
++  input[type="text"],
++  input[type="number"],
++  select,
++  textarea {
++    min-height: var(--tap);
++    font-size: 16px;
++  }
++  button.mini,
++  .mini,
++  .chip-toggle {
++    min-height: var(--tap);
++  }
++  input[type="checkbox"],
++  input[type="radio"] {
++    width: 22px;
++    height: 22px;
++  }
++  input[type="range"] {
++    min-height: 40px;
++  }
++}
++@media (prefers-reduced-motion: reduce) {
++  * {
++    transition-duration: 1ms !important;
++    animation: none !important;
++  }
++}
+diff --git a/web/src/shell.ts b/web/src/shell.ts
+new file mode 100644
+index 0000000..b435a1f
+--- /dev/null
++++ b/web/src/shell.ts
+@@ -0,0 +1,282 @@
++// OnePiece Team workspace shell: tabs, mobile sheets and the help menu.
++// This module only moves visibility and focus around. It never touches the engine, the data
++// flow or any value in main.ts; every control keeps its original element id.
++
++type View = "studio" | "palette" | "tools" | "export";
++type Pane = "left" | "right";
++
++const VIEWS: View[] = ["studio", "palette", "tools", "export"];
++const SHEET_MQ = matchMedia("(max-width: 1099.98px)");
++
++const $ = (id: string) => document.getElementById(id);
++
++let pane: Pane | null = null;
++let paneOpener: HTMLElement | null = null;
++
++function isView(v: string | undefined): v is View {
++  return VIEWS.includes(v as View);
++}
++
++function setView(view: View, focusTab = false): void {
++  if (pane) closePane(false);
++  closeHelp(false);
++  document.body.dataset.view = view;
++  for (const tab of document.querySelectorAll<HTMLButtonElement>("#tabbar .tab")) {
++    const on = tab.dataset.view === view;
++    tab.setAttribute("aria-selected", String(on));
++    tab.tabIndex = on ? 0 : -1;
++    if (on && focusTab) tab.focus();
++  }
++  for (const el of document.querySelectorAll<HTMLElement>("#workspace > .view")) {
++    el.hidden = el.dataset.view !== view;
++  }
++}
++
++function wireTabs(): void {
++  const tabs = [...document.querySelectorAll<HTMLButtonElement>("#tabbar .tab")];
++  for (const tab of tabs) {
++    tab.onclick = () => {
++      const v = tab.dataset.view;
++      if (isView(v)) {
++        setView(v);
++        window.scrollTo({ top: 0 });
++      }
++    };
++    tab.onkeydown = (ev) => {
++      const i = tabs.indexOf(tab);
++      let next = -1;
++      if (ev.key === "ArrowRight") next = (i + 1) % tabs.length;
++      else if (ev.key === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
++      else if (ev.key === "Home") next = 0;
++      else if (ev.key === "End") next = tabs.length - 1;
++      if (next < 0) return;
++      ev.preventDefault();
++      const v = tabs[next].dataset.view;
++      if (isView(v)) setView(v, true);
++    };
++  }
++  setView("studio");
++}
++
++// In-page links (#export-panel and friends) must first reveal the tab that holds the target.
++function wireHashLinks(): void {
++  document.addEventListener("click", (ev) => {
++    const a = (ev.target as Element).closest?.<HTMLAnchorElement>('a[href^="#"]');
++    if (!a || a.getAttribute("href") === "#") return;
++    const target = document.getElementById(a.getAttribute("href")?.slice(1) ?? "");
++    if (!target) return;
++    const holder = target.closest<HTMLElement>(".view");
++    ev.preventDefault();
++    if (holder && isView(holder.dataset.view)) setView(holder.dataset.view);
++    target.scrollIntoView({ block: "start" });
++    if (target.tabIndex >= 0) target.focus({ preventScroll: true });
++  });
++}
++
++// A whole section header toggles its fold, not just the small chevron. Real controls inside the
++// header (checkboxes, buttons, links) keep their own behaviour.
++function wireFoldHeaders(): void {
++  document.addEventListener("click", (ev) => {
++    const target = ev.target as Element;
++    const head = target.closest<HTMLElement>(".sub-head");
++    if (!head || target.closest("button, input, select, textarea, label, a")) return;
++    head.querySelector<HTMLButtonElement>(":scope > .fold")?.click();
++  });
++}
++
++// ---------------------------------------------------------------- sheets (phones and tablets)
++function paneEl(p: Pane): HTMLElement | null {
++  return $(p === "left" ? "col-left" : "col-right");
++}
++
++function syncDock(): void {
++  for (const btn of document.querySelectorAll<HTMLButtonElement>("#studio-dock .dock-btn")) {
++    btn.setAttribute("aria-pressed", String(btn.dataset.pane === pane));
++  }
++}
++
++function openPane(p: Pane, opener: HTMLElement | null): void {
++  if (!SHEET_MQ.matches) return;
++  if (pane && pane !== p) closePane(false);
++  pane = p;
++  paneOpener = opener;
++  document.body.dataset.pane = p;
++  document.body.classList.add("sheet-open");
++  const el = paneEl(p);
++  if (el) {
++    el.setAttribute("role", "dialog");
++    el.setAttribute("aria-modal", "true");
++    el.setAttribute("aria-label", p === "left" ? "Görsel ve kompozisyon" : "Üretim ayarları");
++    el.tabIndex = -1;
++    el.scrollTop = 0;
++    el.focus({ preventScroll: true });
++  }
++  const back = $("sheet-backdrop");
++  if (back) back.hidden = false;
++  syncDock();
++}
++
++function closePane(restoreFocus = true): void {
++  if (!pane) return;
++  const el = paneEl(pane);
++  el?.removeAttribute("role");
++  el?.removeAttribute("aria-modal");
++  el?.removeAttribute("aria-label");
++  pane = null;
++  delete document.body.dataset.pane;
++  document.body.classList.remove("sheet-open");
++  const back = $("sheet-backdrop");
++  if (back) back.hidden = true;
++  syncDock();
++  if (restoreFocus) paneOpener?.focus();
++  paneOpener = null;
++}
++
++function trapFocus(ev: KeyboardEvent): void {
++  if (!pane || ev.key !== "Tab") return;
++  const el = paneEl(pane);
++  if (!el) return;
++  const items = [
++    ...el.querySelectorAll<HTMLElement>(
++      'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
++    ),
++  ].filter((n) => n.offsetParent !== null);
++  if (!items.length) return;
++  const first = items[0];
++  const last = items[items.length - 1];
++  const active = document.activeElement;
++  if (ev.shiftKey && (active === first || active === el)) {
++    ev.preventDefault();
++    last.focus();
++  } else if (!ev.shiftKey && active === last) {
++    ev.preventDefault();
++    first.focus();
++  }
++}
++
++function wireSheets(): void {
++  const titles: Record<Pane, string> = { left: "Görsel ve kompozisyon", right: "Üretim ayarları" };
++  for (const p of ["left", "right"] as Pane[]) {
++    const el = paneEl(p);
++    if (!el) continue;
++    const bar = document.createElement("div");
++    bar.className = "sheet-bar";
++    const grip = document.createElement("span");
++    grip.className = "sheet-title";
++    grip.textContent = titles[p];
++    const close = document.createElement("button");
++    close.type = "button";
++    close.className = "sheet-close";
++    close.setAttribute("aria-label", "Kapat");
++    close.textContent = "Bitti";
++    close.onclick = () => closePane();
++    bar.append(grip, close);
++    el.prepend(bar);
++  }
++  for (const btn of document.querySelectorAll<HTMLButtonElement>("#studio-dock .dock-btn")) {
++    btn.onclick = () => {
++      const p = btn.dataset.pane as Pane;
++      if (pane === p) closePane();
++      else openPane(p, btn);
++    };
++  }
++  $("sheet-backdrop")?.addEventListener("click", () => closePane());
++  document.addEventListener("keydown", (ev) => {
++    if (ev.key === "Escape" && pane) {
++      ev.preventDefault();
++      closePane();
++    }
++    trapFocus(ev);
++  });
++  SHEET_MQ.addEventListener("change", () => {
++    if (!SHEET_MQ.matches) closePane(false);
++  });
++  // A new picture is the end of that task: put the preview back in front.
++  $("file")?.addEventListener("change", () => closePane(false));
++  $("img-pick")?.addEventListener("click", () => $("file")?.click());
++}
++
++// ---------------------------------------------------------------- help menu
++function closeHelp(restoreFocus = true): void {
++  const menu = $("help-menu");
++  const btn = $("help-btn");
++  if (!menu || menu.hidden) return;
++  menu.hidden = true;
++  btn?.setAttribute("aria-expanded", "false");
++  if (restoreFocus) btn?.focus();
++}
++
++function wireHelp(): void {
++  const menu = $("help-menu");
++  const btn = $("help-btn");
++  if (!menu || !btn) return;
++  btn.onclick = () => {
++    const open = menu.hidden;
++    menu.hidden = !open;
++    btn.setAttribute("aria-expanded", String(open));
++    if (open) menu.querySelector<HTMLElement>("a")?.focus();
++  };
++  document.addEventListener("click", (ev) => {
++    if (!menu.hidden && !(ev.target as Element).closest(".help")) closeHelp(false);
++  });
++  menu.addEventListener("keydown", (ev) => {
++    const links = [...menu.querySelectorAll<HTMLElement>("a")];
++    const i = links.indexOf(document.activeElement as HTMLElement);
++    if (ev.key === "Escape") {
++      ev.preventDefault();
++      closeHelp();
++    } else if (ev.key === "ArrowDown") {
++      ev.preventDefault();
++      links[(i + 1) % links.length]?.focus();
++    } else if (ev.key === "ArrowUp") {
++      ev.preventDefault();
++      links[(i - 1 + links.length) % links.length]?.focus();
++    }
++  });
++}
++
++// ---------------------------------------------------------------- palette search
++// Display-only: hides rendered rows that do not match. Palette state and the solver never see it.
++function wirePaletteSearch(): void {
++  const input = $("palette-search") as HTMLInputElement | null;
++  const root = $("palette");
++  const count = $("palette-search-count");
++  if (!input || !root) return;
++  let frame = 0;
++  const apply = () => {
++    frame = 0;
++    const q = input.value.trim().toLowerCase();
++    const rows = root.querySelectorAll<HTMLElement>(".palette-row, tbody tr");
++    let shown = 0;
++    for (const row of rows) {
++      let hit = !q;
++      if (!hit) {
++        let hay = row.textContent ?? "";
++        for (const el of row.querySelectorAll<HTMLElement>("[title], [aria-label]")) {
++          hay += ` ${el.title} ${el.getAttribute("aria-label") ?? ""}`;
++        }
++        hit = hay.toLowerCase().includes(q);
++      }
++      row.classList.toggle("pal-hide", !hit);
++      if (hit) shown++;
++    }
++    if (count) count.textContent = q ? `${shown} of ${rows.length} colors match` : "";
++  };
++  const schedule = () => {
++    if (!frame) frame = requestAnimationFrame(apply);
++  };
++  input.addEventListener("input", schedule);
++  new MutationObserver(() => {
++    if (input.value) schedule();
++  }).observe(root, { childList: true });
++}
++
++export function initShell(): void {
++  wireTabs();
++  wireHashLinks();
++  wireFoldHeaders();
++  wireSheets();
++  wireHelp();
++  wirePaletteSearch();
++  document.body.dataset.shell = "ready";
++}
+diff --git a/web/src/site.css b/web/src/site.css
+index a6d5331..5775aa3 100644
+--- a/web/src/site.css
++++ b/web/src/site.css
+@@ -2,6 +2,7 @@
+ 
+ body.page {
+   margin: 0;
++  overflow-x: hidden;
+   background: var(--bg);
+   color: var(--ink);
+   font: var(--t-body) / 1.55 var(--font-ui);
+@@ -20,16 +21,43 @@ a:hover {
+   padding: 0.7rem 1.2rem;
+ }
+ .site-head {
++  position: sticky;
++  top: 0;
++  z-index: 20;
+   display: flex;
+   flex-wrap: wrap;
+-  align-items: baseline;
++  align-items: center;
+   gap: 0.4rem 1rem;
++  background: rgba(7, 9, 10, 0.96);
+   border-bottom: 1px solid var(--edge);
+ }
++.site-back {
++  display: inline-flex;
++  align-items: center;
++  gap: 8px;
++  min-height: 44px;
++  padding: 0 14px 0 10px;
++  border: 1px solid var(--edge);
++  color: var(--ink);
++  text-decoration: none;
++  font: 600 14px / 1 var(--font-ui);
++  white-space: nowrap;
++}
++.site-back:hover {
++  border-color: var(--g);
++  color: var(--g);
++}
++.beta-chip {
++  padding: 1px 6px;
++  border: 1px solid var(--edge-control);
++  border-radius: var(--r);
++  font: 400 11px / 1.4 var(--font-mono);
++  color: var(--warn);
++}
+ .site-name {
+-  font-size: var(--t-title);
+-  font-weight: 700;
+-  letter-spacing: -0.01em;
++  font: 900 28px / 1 var(--font-display);
++  text-transform: uppercase;
++  letter-spacing: 0.015em;
+   color: var(--ink);
+   text-decoration: none;
+ }
+@@ -39,9 +67,13 @@ a:hover {
+ .site-nav {
+   margin-left: auto;
+   display: flex;
+-  gap: 1rem;
++  flex-wrap: wrap;
++  gap: 0 1rem;
+ }
+ .site-nav a {
++  display: inline-flex;
++  align-items: center;
++  min-height: 44px;
+   color: var(--dim);
+   text-decoration: none;
+ }
+@@ -55,9 +87,10 @@ a:hover {
+   padding: 1rem 1.2rem 2rem;
+ }
+ h1 {
+-  font-size: 1.6rem;
+-  margin: 0.6rem 0 0.4rem;
+-  letter-spacing: -0.01em;
++  font: 900 clamp(34px, 6vw, 56px) / 0.95 var(--font-display);
++  text-transform: uppercase;
++  margin: 0.6rem 0 0.6rem;
++  letter-spacing: 0.01em;
+ }
+ h2 {
+   font-size: 1.1rem;
+@@ -85,7 +118,7 @@ h2 {
+   display: block;
+   width: 1.4rem;
+   height: 1.4rem;
+-  border-radius: 4px;
++  border-radius: var(--r);
+   border: 1px solid var(--edge);
+ }
+ .chip:hover {
+@@ -127,7 +160,7 @@ h2 {
+ }
+ .sw {
+   height: 2rem;
+-  border-radius: 4px;
++  border-radius: var(--r);
+   border: 1px solid var(--edge);
+ }
+ .lab {
+@@ -330,7 +363,7 @@ figure img {
+   color: var(--dim);
+   background: none;
+   border: 1px solid var(--edge-control);
+-  border-radius: 4px;
++  border-radius: var(--r);
+   padding: 0 0.4em;
+   cursor: pointer;
+ }
+diff --git a/web/src/style.css b/web/src/style.css
+index f4ffdd2..3d4941c 100644
+--- a/web/src/style.css
++++ b/web/src/style.css
+@@ -43,7 +43,7 @@ header h1 {
+   gap: 0.4rem;
+   padding: 0.2rem 0.7rem;
+   border: 1px solid var(--edge-control);
+-  border-radius: 999px;
++  border-radius: var(--r);
+   background: none;
+   color: var(--ink);
+   text-decoration: none;
+@@ -65,7 +65,7 @@ header h1 {
+   padding: 0 0.45em;
+   margin-right: 0.4em;
+   border: 1px solid var(--edge);
+-  border-radius: 999px;
++  border-radius: var(--r);
+   font-size: 0.85em;
+   letter-spacing: 0.04em;
+   color: var(--warn, #e0af68);
+@@ -84,7 +84,7 @@ header h1 {
+   align-items: center;
+   padding: 0.05rem 0.6rem;
+   border: 1px solid var(--edge);
+-  border-radius: 999px;
++  border-radius: var(--r);
+   font-size: var(--t-small);
+   color: var(--dim);
+   text-decoration: none;
+@@ -102,7 +102,7 @@ header h1 {
+   background: var(--panel);
+   color: var(--ink);
+   border: 1px solid var(--edge-control);
+-  border-radius: 4px;
++  border-radius: var(--r);
+   text-decoration: none;
+   transform: translateY(-300%);
+   opacity: 0;
+@@ -192,8 +192,8 @@ body.preview-inline #preview-panel {
+ 
+ section {
+   background: var(--panel);
+-  border: 1px solid #262a33;
+-  border-radius: 6px;
++  border: 1px solid var(--edge);
++  border-radius: var(--r);
+   padding: var(--sp-3) var(--sp-4) var(--sp-4);
+   min-width: 0;
+   overflow-x: auto;
+@@ -209,7 +209,7 @@ h2 {
+   font-size: var(--t-head);
+   background: var(--panel-head);
+   border-bottom: 1px solid var(--edge);
+-  border-radius: 6px 6px 0 0;
++  border-radius: var(--r) var(--r) 0 0;
+ }
+ h2 > .dim {
+   font-size: var(--t-small);
+@@ -255,7 +255,7 @@ button {
+   background: var(--bg);
+   color: var(--ink);
+   border: 1px solid var(--edge-control);
+-  border-radius: 4px;
++  border-radius: var(--r);
+   padding: 0.25rem 0.5rem;
+ }
+ button {
+@@ -272,7 +272,7 @@ button.mini {
+ #generate {
+   margin-top: 0.5rem;
+   background: var(--accent);
+-  color: #10121a;
++  color: var(--accent-ink);
+   font-weight: 600;
+ }
+ 
+@@ -280,7 +280,8 @@ button.mini {
+   image-rendering: pixelated;
+   display: block;
+   border: 1px solid var(--edge);
+-  background: repeating-conic-gradient(#22252d 0% 25%, #1a1d24 0% 50%) 0 0 / 16px 16px;
++  background:
++    repeating-conic-gradient(var(--checker-a) 0% 25%, var(--checker-b) 0% 50%) 0 0 / 16px 16px;
+ }
+ 
+ #preview-panel.hidden-preview #preview-slot,
+@@ -313,7 +314,7 @@ button.mini {
+   gap: 0.45rem;
+   background: var(--bg);
+   border: 1px solid var(--edge-control);
+-  border-radius: 4px;
++  border-radius: var(--r);
+   padding: 0.2rem 0.5rem;
+   color: var(--ink);
+   font-size: var(--t-body);
+@@ -324,7 +325,8 @@ button.mini {
+   image-rendering: pixelated;
+   border: 1px solid var(--edge);
+   border-radius: 2px;
+-  background: repeating-conic-gradient(#22252d 0% 25%, #1a1d24 0% 50%) 0 0 / 8px 8px;
++  background:
++    repeating-conic-gradient(var(--checker-a) 0% 25%, var(--checker-b) 0% 50%) 0 0 / 8px 8px;
+   flex: none;
+ }
+ .dither-btn .caret {
+@@ -417,7 +419,7 @@ th {
+   font-size: 0.7rem;
+   line-height: 1.5;
+   border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+-  border-radius: 3px;
++  border-radius: var(--r);
+   padding: 0 0.3rem;
+   margin: 1px 2px 1px 0;
+   color: var(--warn);
+@@ -456,7 +458,7 @@ th {
+   height: 32px;
+   flex: none;
+   border: 1px solid var(--edge);
+-  border-radius: 3px;
++  border-radius: var(--r);
+   margin-right: 4px;
+ }
+ .tile {
+@@ -465,7 +467,7 @@ th {
+   flex: none;
+   padding: 0;
+   border: 1px solid transparent;
+-  border-radius: 3px;
++  border-radius: var(--r);
+   background-color: transparent;
+   background-image: var(--atlas-url, url("/atlas.webp"));
+   background-size: calc(var(--atlas-cols, 32) * var(--tile-size, 32px)) auto;
+@@ -480,7 +482,7 @@ th {
+ .tile.selected {
+   border-color: var(--good);
+   box-shadow: inset 0 0 0 1px var(--good);
+-  background-color: rgba(125, 195, 131, 0.18);
++  background-color: rgba(57, 255, 136, 0.12);
+ }
+ .tile.norecovery {
+   filter: grayscale(0.7);
+@@ -579,7 +581,7 @@ th {
+   background: rgba(255, 255, 255, 0.018);
+ }
+ .prow:hover > td {
+-  background: rgba(122, 162, 247, 0.1);
++  background: rgba(57, 255, 136, 0.07);
+ }
+ .prow.off {
+   color: var(--dim);
+@@ -636,15 +638,15 @@ th {
+   align-items: center;
+   gap: 0.4rem;
+   padding: 1px 4px;
+-  border-radius: 3px;
++  border-radius: var(--r);
+   cursor: pointer;
+ }
+ .cand-row:hover {
+-  background: rgba(122, 162, 247, 0.12);
++  background: rgba(57, 255, 136, 0.08);
+ }
+ .cand-row.selected {
+-  background: rgba(125, 195, 131, 0.15);
+-  outline: 1px solid #7dc38366;
++  background: rgba(57, 255, 136, 0.1);
++  outline: 1px solid rgba(57, 255, 136, 0.45);
+ }
+ 
+ #preview-wrap {
+@@ -667,7 +669,7 @@ th {
+   color: rgba(235, 240, 255, 0.85);
+   background: rgba(13, 15, 20, 0.6);
+   padding: 0 4px;
+-  border-radius: 0 0 4px 0;
++  border-radius: 0;
+   pointer-events: none;
+   white-space: nowrap;
+ }
+@@ -689,7 +691,7 @@ section.collapsed > :not(h2) {
+ section.collapsed > h2 {
+   margin-bottom: calc(-1 * var(--sp-4));
+   border-bottom: 0;
+-  border-radius: 6px;
++  border-radius: var(--r);
+ }
+ section.collapsed > h2 .fold {
+   transform: rotate(-90deg);
+@@ -746,7 +748,7 @@ section.collapsed > h2 .fold {
+ 
+ .tool-item {
+   border: 1px solid var(--edge);
+-  border-radius: 5px;
++  border-radius: var(--r);
+   background: color-mix(in srgb, var(--bg) 50%, transparent);
+   padding: 0.5rem 0.6rem 0.55rem;
+   margin-bottom: 0.4rem;
+@@ -820,7 +822,7 @@ label.ench.muted,
+   margin: 0 0 0.6rem;
+   padding: 0.45rem 0.6rem;
+   border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+-  border-radius: 4px;
++  border-radius: var(--r);
+   background: color-mix(in srgb, var(--warn) 8%, transparent);
+   color: var(--ink);
+   font-size: var(--t-small);
+@@ -847,7 +849,7 @@ input.nick {
+   margin-top: 0.4rem;
+   padding: 0.45rem 0.6rem;
+   border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+-  border-radius: 4px;
++  border-radius: var(--r);
+   background: color-mix(in srgb, var(--accent) 8%, transparent);
+   font-size: var(--t-small);
+ }
+@@ -871,7 +873,7 @@ input.nick {
+   min-height: 11rem;
+   padding: 1rem;
+   border: 2px dashed color-mix(in srgb, var(--warn) 55%, transparent);
+-  border-radius: 6px;
++  border-radius: var(--r);
+   background: color-mix(in srgb, var(--warn) 7%, transparent);
+   text-align: center;
+ }
+@@ -892,7 +894,7 @@ input.nick {
+   align-items: center;
+   justify-content: center;
+   border: 2px dashed color-mix(in srgb, var(--accent) 45%, transparent);
+-  border-radius: 6px;
++  border-radius: var(--r);
+   color: var(--dim);
+   font-size: 0.85rem;
+ }
+@@ -946,7 +948,7 @@ button.danger:hover {
+   line-height: 1.5;
+   padding: 0 0.3rem;
+   margin: 1px 2px 1px 0;
+-  border-radius: 3px;
++  border-radius: var(--r);
+   white-space: nowrap;
+   color: var(--accent);
+   border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+@@ -1017,7 +1019,7 @@ button.danger:hover {
+   z-index: 50;
+   display: flex;
+   flex-direction: column;
+-  background: #0b0b0d;
++  background: var(--bg);
+ }
+ .view2d-bar {
+   display: flex;
+@@ -1077,7 +1079,7 @@ button.danger:hover {
+   color: var(--warn);
+   border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+   background: color-mix(in srgb, var(--warn) 12%, transparent);
+-  border-radius: 999px;
++  border-radius: var(--r);
+   padding: 0.05rem 0.5rem;
+ }
+ 
+@@ -1230,7 +1232,7 @@ button.danger:hover {
+   font-size: var(--t-small);
+   color: var(--dim);
+   border: 1px solid var(--edge-control);
+-  border-radius: 999px;
++  border-radius: var(--r);
+   padding: 0.05rem 0.5rem;
+ }
+ 
+@@ -1339,7 +1341,7 @@ input[type="color"] {
+   font-size: var(--t-small);
+   color: var(--dim);
+   border: 1px solid var(--edge);
+-  border-radius: 999px;
++  border-radius: var(--r);
+   padding: 0.05rem 0.5rem;
+ }
+ .chip-filter.some-off {
+@@ -1396,7 +1398,7 @@ a.mini.jump {
+   align-items: center;
+   padding: 0.15rem 0.5rem;
+   border: 1px solid var(--edge-control);
+-  border-radius: 4px;
++  border-radius: var(--r);
+   color: var(--accent);
+   font-size: 0.8rem;
+   line-height: 1.55;
+@@ -1430,7 +1432,7 @@ a.mini.jump:hover {
+   overflow-y: auto;
+   background: var(--panel);
+   border: 1px solid var(--edge-control);
+-  border-radius: 5px;
++  border-radius: var(--r);
+   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+ }
+ .picker-group {
+@@ -1500,7 +1502,7 @@ ul.note li {
+   gap: 0.9rem;
+   padding: 0.55rem 0.9rem;
+   border: 1px solid var(--edge);
+-  border-radius: 6px;
++  border-radius: var(--r);
+   max-width: 34rem;
+   text-decoration: none;
+ }
+@@ -1741,7 +1743,7 @@ ul.note li {
+     text-decoration: none;
+     font-size: var(--t-small);
+     border: 1px solid var(--edge-control);
+-    border-radius: 4px;
++    border-radius: var(--r);
+   }
+ }
+ 
+diff --git a/web/src/tokens.css b/web/src/tokens.css
+index e0e5c16..2bd4099 100644
+--- a/web/src/tokens.css
++++ b/web/src/tokens.css
+@@ -1,16 +1,57 @@
++/* OnePiece Team design tokens (mirrors /css/style.css of the main site). */
+ @font-face {
+-  font-family: "Atkinson Hyperlegible";
+-  src: url("/fonts/AtkinsonHyperlegible-400.woff2") format("woff2");
++  font-family: "Big Shoulders Display";
++  font-style: normal;
++  font-weight: 900;
++  font-display: swap;
++  src: url("/assets/fonts/big-shoulders-display-latin-900-normal.woff2") format("woff2");
++  unicode-range:
++    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
++}
++@font-face {
++  font-family: "Big Shoulders Display";
++  font-style: normal;
++  font-weight: 900;
++  font-display: swap;
++  src: url("/assets/fonts/big-shoulders-display-latin-ext-900-normal.woff2") format("woff2");
++  unicode-range:
++    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
++}
++@font-face {
++  font-family: "Hanken Grotesk";
++  font-style: normal;
++  font-weight: 400;
++  font-display: swap;
++  src: url("/assets/fonts/hanken-grotesk-latin-400-normal.woff2") format("woff2");
++  unicode-range:
++    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
++}
++@font-face {
++  font-family: "Hanken Grotesk";
++  font-style: normal;
+   font-weight: 400;
++  font-display: swap;
++  src: url("/assets/fonts/hanken-grotesk-latin-ext-400-normal.woff2") format("woff2");
++  unicode-range:
++    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
++}
++@font-face {
++  font-family: "Hanken Grotesk";
+   font-style: normal;
++  font-weight: 600;
+   font-display: swap;
++  src: url("/assets/fonts/hanken-grotesk-latin-600-normal.woff2") format("woff2");
++  unicode-range:
++    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ @font-face {
+-  font-family: "Atkinson Hyperlegible";
+-  src: url("/fonts/AtkinsonHyperlegible-700.woff2") format("woff2");
+-  font-weight: 700;
++  font-family: "Hanken Grotesk";
+   font-style: normal;
++  font-weight: 600;
+   font-display: swap;
++  src: url("/assets/fonts/hanken-grotesk-latin-ext-600-normal.woff2") format("woff2");
++  unicode-range:
++    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+ }
+ @font-face {
+   font-family: "JetBrains Mono";
+@@ -21,30 +62,47 @@
+ }
+ 
+ :root {
+-  --bg: #16181d;
+-  --panel: #1e2128;
+-  --ink: #d6d8de;
+-  --dim: #9aa3b2;
+-  --dimmer: #848c9d;
+-  --edge: #30343e;
+-  --edge-soft: #272b34;
+-  --panel-head: #23272f;
++  /* surface, same names and values as the main site */
++  --void: #07090a;
++  --charcoal: #0d1113;
++  --graphite: #161b1e;
++  --rule: #263034;
++  --g: #39ff88;
++  --b: #3d8bff;
++
++  --bg: var(--void);
++  --panel: var(--charcoal);
++  --panel-head: var(--graphite);
++  --ink: #e6ede8;
++  --dim: #8a968f;
++  --dimmer: #7e8a83;
++  --edge: var(--rule);
++  --edge-soft: #1a2226;
++  --edge-control: #5b6a6f;
++  --accent: var(--g);
++  --accent-ink: var(--void);
++  --focus: var(--b);
++  --warn: #e8b454;
++  --good: #6fdc9a;
++  --bad: #ff6b7d;
++  --checker-a: #161b1e;
++  --checker-b: #0f1417;
++
++  --r: 2px;
+   --sp-1: 0.25rem;
+   --sp-2: 0.5rem;
+   --sp-3: 0.75rem;
+   --sp-4: 1rem;
+   --sp-6: 1.5rem;
+-  --edge-control: #656d82;
+-  --accent: #7aa2f7;
+-  --warn: #e0af68;
+-  --good: #7dc383;
+-  --bad: #f7768e;
+-  --font-ui: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
++
++  --font-ui: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
++  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
++  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+   --t-title: 1.35rem;
+   --t-head: 1.2rem;
+   --t-body: 0.95rem;
+-  --t-small: 0.82rem;
++  --t-small: 0.85rem;
++  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+   --tile-size: var(--tile-pref, 32px);
+   color-scheme: dark;
+ }
+diff --git a/web/tools/pages.js b/web/tools/pages.js
+index 8c9c67d..bf54b2a 100644
+--- a/web/tools/pages.js
++++ b/web/tools/pages.js
+@@ -1,6 +1,6 @@
+ import { execSync } from "node:child_process";
+ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+-import { esc, fail, OG_ALT, OG_IMAGE, readJson, SITE, THEME_COLOR } from "./lib.js";
++import { esc, fail, readJson, SITE, THEME_COLOR } from "./lib.js";
+ 
+ const BLOCKS = process.env.PAGES_BLOCKS || "../data/blocks-26.2.json";
+ const VERSIONS = process.env.PAGES_VERSIONS || "../data/versions.json";
+@@ -171,33 +171,28 @@ function shell({ path, title, description, body, ld, extraHead = "" }) {
+     `    <meta property="og:url" content="${url}" />`,
+     `    <meta property="og:title" content="${esc(title)}" />`,
+     `    <meta property="og:description" content="${esc(description)}" />`,
+-    `    <meta property="og:image" content="${OG_IMAGE}" />`,
+-    `    <meta property="og:image:width" content="1200" />`,
+-    `    <meta property="og:image:height" content="630" />`,
+-    `    <meta property="og:image:alt" content="${esc(OG_ALT)}" />`,
+-    `    <meta property="og:site_name" content="b8b7.live" />`,
+-    `    <meta name="twitter:card" content="summary_large_image" />`,
++    `    <meta property="og:site_name" content="OnePiece Team" />`,
+     `    <script type="application/ld+json">${JSON.stringify(ld)}</script>`,
+     `    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />`,
+     `    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />`,
+     `    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />`,
+-    `    <link rel="alternate" type="application/atom+xml" title="Arachne release notes" href="${SITE}feed.xml" />`,
+     `    <meta name="theme-color" content="${THEME_COLOR}" />`,
+     `    <link rel="stylesheet" href="/src/site.css" />`,
+     extraHead,
+     `  </head>`,
+     `  <body class="page">`,
+     `    <header class="site-head">`,
+-    `      <a class="site-name" href="../">Arachne</a>`,
+-    `      <span class="site-tag">Minecraft map art maker</span>`,
++    `      <a class="site-back" href="/" aria-label="OnePiece Team'e Dön"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg><span>OnePiece Team'e Dön</span></a>`,
++    `      <a class="site-name" href="../">Map Art</a>`,
++    `      <span class="site-tag">Arachne <span class="beta-chip">beta</span></span>`,
+     `      <nav class="site-nav"><a href="../faq/">FAQ</a><a href="../colors/">colors</a><a href="../fonts/">fonts</a><a href="../changelog/">release notes</a></nav>`,
+     `    </header>`,
+     `    <main class="page-main">`,
+     body,
+     `    </main>`,
+     `    <footer class="site-foot">`,
+-    `      <p><a href="../">Open Arachne</a> · <a href="${SITE}feed.xml">release notes feed</a> · <a href="https://b8b7.live/">b8b7.live</a></p>`,
+-    `      <p><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GPL-3.0</a> · questions and bug reports go to <a href="mailto:arachne@b8b7.live">arachne@b8b7.live</a></p>`,
++    `      <p><a href="../">Map Art</a> · <a href="/">OnePiece Team</a></p>`,
++    `      <p><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GPL-3.0</a> · Arachne tabanlı · <a href="../NOTICE.txt">NOTICE</a> · <a href="../LICENSE-GPL-3.0.txt">LICENSE</a></p>`,
+     `      <p class="legal">Minecraft block textures and block data are the property of Mojang. This project is independent and has no connection to Mojang or Microsoft.</p>`,
+     `    </footer>`,
+     `  </body>`,

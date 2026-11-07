@@ -3,31 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arachne · Minecraft map art maker and generator</title>
-    <meta name="description" content="Free Minecraft map art maker. Turn a picture into a Litematica or WorldEdit schematic with a palette priced for survival. It runs in your browser with no tracking." />
+    <title>Map Art · OnePiece Team</title>
+    <meta name="description" content="OnePiece Team Map Art: turn a picture into Minecraft map art and a Litematica or NBT schematic, right in your browser." />
     <link rel="canonical" href="https://sovalyecraft.space/map-art/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sovalyecraft.space/map-art/" />
-    <meta property="og:title" content="Arachne · Minecraft map art maker and generator" />
-    <meta property="og:description" content="Free Minecraft map art maker. Turn a picture into map art in your browser, with no account and no tracking." />
-    <meta property="og:image" content="https://b8b7.live/assets/brand/og-card.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="A rolled Minecraft map sealed with a spider medallion" />
-    <meta property="og:site_name" content="b8b7.live" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:title" content="Map Art · OnePiece Team" />
+    <meta property="og:description" content="Turn a picture into Minecraft map art in your browser. Nothing is uploaded." />
+    <meta property="og:site_name" content="OnePiece Team" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Arachne",
+      "name": "Map Art · OnePiece Team",
       "url": "https://sovalyecraft.space/map-art/",
-      "description": "Free Minecraft map art maker. Turn a picture into a Litematica or WorldEdit schematic with a palette priced for survival. It runs in your browser with no tracking.",
+      "description": "Turn a picture into Minecraft map art and a Litematica or NBT schematic. Runs in your browser.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript and WebAssembly",
       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-      "author": {"@type": "Person", "name": "b8b7", "url": "https://b8b7.live/"},
+      "author": {"@type": "Organization", "name": "OnePiece Team", "url": "https://sovalyecraft.space/"},
       "license": "https://www.gnu.org/licenses/gpl-3.0.html"
     }
     </script>
@@ -35,43 +30,50 @@
     <link rel="icon" href="/map-art/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/map-art/apple-touch-icon.png" />
     <link rel="manifest" href="/map-art/manifest.webmanifest" />
-    <link rel="alternate" type="application/atom+xml" title="Arachne release notes" href="https://sovalyecraft.space/map-art/feed.xml" />
-    <meta name="theme-color" content="#16181d" />
-    <script type="module" crossorigin src="/map-art/assets/main-BR3q1e3c.js"></script>
+    <meta name="theme-color" content="#07090A" />
+    <script type="module" crossorigin src="/map-art/assets/main-Z98dejgO.js"></script>
     <link rel="modulepreload" crossorigin href="/map-art/assets/modulepreload-polyfill-P2Xu9kJm.js">
-    <link rel="stylesheet" crossorigin href="/map-art/assets/main-CW1CtNRd.css">
+    <link rel="stylesheet" crossorigin href="/map-art/assets/main-DRPWuJsd.css">
   </head>
-  <body>
-    <a class="skip-link" href="#source-panel">Skip to the tool</a>
-    <header>
-      <h1>Arachne <span class="beta-chip">beta</span></h1>
-      <p class="tag">Minecraft map art maker</p>
-      <nav class="page-links" aria-label="pages"><a href="faq/">FAQ</a><a href="colors/">colors</a><a href="fonts/">fonts</a><a href="changelog/">release notes</a></nav>
-      <span id="status" class="status">loading…</span>
+  <body data-view="studio">
+    <a class="skip-link" href="#view-studio">Skip to the tool</a>
+    <header class="appbar" id="appbar">
+      <a class="back" id="back-home" href="/" aria-label="OnePiece Team'e Dön"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg><span class="back-label">OnePiece Team'e Dön</span></a>
+      <div class="appbar-title">
+        <img class="appbar-logo" src="/assets/logo.png" width="61" height="34" alt="" decoding="async" />
+        <h1><span class="appbar-app">Map Art</span> <span class="appbar-sep" aria-hidden="true">/</span> <span class="appbar-by">Arachne <span class="beta-chip">beta</span></span></h1>
+      </div>
+      <div class="appbar-spacer"></div>
+      <label class="ver" for="game-version"><span class="ver-label">Minecraft</span>
+        <select id="game-version" aria-label="Minecraft sürümü"></select></label>
+      <span id="status" class="status" role="status">loading…</span>
+      <div class="help">
+        <button type="button" id="help-btn" class="help-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" aria-label="Yardım">
+          <svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 9.5a2.5 2.5 0 115 0c0 1.7-2.5 2-2.5 4M12 17v.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+          <span class="help-label">Yardım</span></button>
+        <div class="help-menu" id="help-menu" role="menu" hidden>
+          <a role="menuitem" href="faq/">SSS · FAQ</a>
+          <a role="menuitem" href="colors/">Renkler · colors</a>
+          <a role="menuitem" href="fonts/">Yazı tipleri · fonts</a>
+          <a role="menuitem" href="changelog/">Sürüm notları · release notes</a>
+          <div class="help-opt" id="explain-slot"></div>
+        </div>
+      </div>
     </header>
-    <section id="about-panel">
-      <h2>About</h2>
-      <p class="note">Free Minecraft map art maker for survival builders, made and run by me, b8b7!
-        Give it a picture and it plans the whole build, from the palette to the
-        schematics and the materials list. Below you will find the source, my
-        other Minecraft work, and a tip jar if you enjoyed the project.</p>
-      <div class="row brand-row">
-        <a class="brand-chip" href="https://github.com/b8b7lives/arachne" target="_blank" rel="noopener noreferrer" title="the footer offers the source of this exact build"><img class="brand-ico" src="/map-art/icons/github.svg" alt="" />GitHub</a>
-        <a class="brand-chip" href="https://modrinth.com/user/b8b7" target="_blank" rel="noopener noreferrer"><img class="brand-ico" src="/map-art/icons/modrinth.svg" alt="" />Modrinth</a>
-        <a class="brand-chip" href="https://www.curseforge.com/members/b8b7lives/projects" target="_blank" rel="noopener noreferrer"><img class="brand-ico" src="/map-art/icons/curseforge.svg" alt="" />CurseForge</a>
-        <a class="brand-chip" href="https://ko-fi.com/b8b7live" target="_blank" rel="noopener noreferrer"><img class="brand-ico" src="/map-art/icons/kofi.svg" alt="" />Ko-fi</a>
-        <a class="brand-chip" href="https://b8b7.live/discord" target="_blank" rel="noopener noreferrer" title="community server: builds, help, release notes"><img class="brand-ico" src="/map-art/icons/discord.svg" alt="" />Discord</a>
-      </div>
-      <div class="communities" id="communities" hidden>
-        <div class="sub-head">communities that build with Arachne <span class="hint" role="img" aria-label="Communities Arachne is part of. Nothing here is paid or sponsored, and none of them run this project. If your server, stream, or project builds with Arachne, say hi in the Discord or write arachne@b8b7.live" title="Communities Arachne is part of. Nothing here is paid or sponsored, and none of them run this project. If your server, stream, or project builds with Arachne, say hi in the Discord or write arachne@b8b7.live">?</span></div>
-        <div id="communities-cards"></div>
-      </div>
-    </section>
+    <div class="tabbar" id="tabbar" role="tablist" aria-label="Çalışma alanı">
+      <button type="button" role="tab" class="tab" id="tab-studio" data-view="studio" aria-controls="view-studio" aria-selected="true"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 5h16v14H4zM9 5v14M15 5v14" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="tab-tr">Stüdyo</span><span class="tab-en">Studio</span></button>
+      <button type="button" role="tab" class="tab" id="tab-palette" data-view="palette" aria-controls="view-palette" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="tab-tr">Palet</span><span class="tab-en">Palette</span></button>
+      <button type="button" role="tab" class="tab" id="tab-tools" data-view="tools" aria-controls="view-tools" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14 6l4 4M5 19l9-9M12 4l8 8-3 3-8-8z" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="tab-tr">Araçlar</span><span class="tab-en">Tools</span></button>
+      <button type="button" role="tab" class="tab" id="tab-export" data-view="export" aria-controls="view-export" aria-selected="false"><svg class="ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg><span class="tab-tr">Dışa aktar</span><span class="tab-en">Export</span></button>
+    </div>
 
-    <main>
-      <section id="source-panel" tabindex="-1">
-        <h2>Source</h2>
-        <div class="ctl-group">
+    <main id="workspace">
+      <div class="view" id="view-studio" data-view="studio" role="tabpanel" aria-labelledby="tab-studio">
+        <div class="studio">
+          <div class="col col-left" id="col-left">
+      <section id="source-panel" tabindex="-1" aria-label="Görsel ve kompozisyon">
+        <h2>Image</h2>
+                <div class="ctl-group">
           <div class="ctl" title="a build is placed block by block from a schematic. A map file is dropped into a world save and needs no blocks, so it can use every color the game knows in all four shades, including the one no block makes">
             <label class="field-name" for="make-mode">make</label>
             <span class="ctl-body">
@@ -86,8 +88,10 @@
             <span class="ctl-body"><input type="file" id="file" accept="image/*" /></span>
           </div>
         </div>
-
-        <div class="subsection" id="framing-section">
+        <div class="img-actions" id="img-actions">
+          <button type="button" id="img-pick" class="pick-btn">Choose or replace picture</button>
+        </div>
+                <div class="subsection" id="framing-section">
           <div class="sub-head">size &amp; framing</div>
           <div class="ctl" title="each map is 128×128 blocks in game">
             <label class="field-name" for="maps-w">size</label>
@@ -134,8 +138,7 @@
           </div>
           </div>
         </div>
-
-        <div class="subsection" id="adjust-section">
+                <div class="subsection" id="adjust-section">
           <div class="sub-head">
             <label title="brightness, contrast, saturation and white balance. Changes what Arachne builds from; the picture on disk is never touched">
               <input type="checkbox" id="adjust-on" /> adjust color properties</label>
@@ -175,8 +178,7 @@
           </div>
           </div>
         </div>
-
-        <div class="subsection" id="text-section">
+                <div class="subsection" id="text-section">
           <div class="sub-head">
             <label title="draw these lines on the map. Off keeps them for later without building them">
               <input type="checkbox" id="text-on" checked /> text on the map</label>
@@ -313,39 +315,59 @@
             </div>
           </div>
         </div>
-
-        <div class="subsection" id="background-row" hidden>
-          <div class="sub-head">transparency</div>
-          <div class="ctl" title="transparent pixels place no blocks. The pad fit keeps this on, because padding is always transparent">
-            <label class="field-name" for="honor-alpha">transparent areas</label>
-            <span class="ctl-body">
-              <label><input type="checkbox" id="honor-alpha" checked /> leave them empty</label>
-            </span>
+      </section>
           </div>
-          <div class="ctl" title="what goes where the picture is transparent, instead of leaving holes in the build">
-            <label class="field-name" for="bg-mode">fill</label>
-            <span class="ctl-body">
-              <select id="bg-mode">
-              <option value="off" selected>none</option>
-              <option value="smooth" title="the closest color a map can make, one block">flat color</option>
-              <option value="dithered" title="your exact color, dithered like the picture">dithered</option>
-            </select>
-              <input type="color" id="bg-color" value="#151515" aria-label="fill color" title="the color to fill with" />
-              <span class="note" id="bg-note"></span>
-            </span>
+          <div class="col col-center" id="col-center">
+      <section id="preview-panel" aria-label="Önizleme">
+        <div class="pv-bar">
+          <h2>Preview <span class="dim" id="preview-meta"></span></h2>
+          <div class="pv-tools preview-zoom" role="toolbar" aria-label="Önizleme araçları">
+            <button type="button" id="zoom-out" class="mini icon" title="zoom out" aria-label="Uzaklaştır">−</button>
+            <button type="button" id="zoom-fit" class="mini" title="fit the whole map in the panel">fit</button>
+            <button type="button" id="zoom-in" class="mini icon" title="zoom in; the preview grows over the page and keeps following your scroll" aria-label="Yakınlaştır">+</button>
+            <label class="mini-label chip-toggle" title="map panel boundaries, named the way the download names files"><input type="checkbox" id="grid-overlay" /> <span>grid</span></label>
           </div>
-          <div class="ctl-group" id="alpha-threshold-row" hidden>
-          <div class="ctl ctl-range" title="pixels less opaque than this count as transparent and place no blocks">
-            <label class="field-name" for="alpha-threshold">transparent below</label>
-            <input type="range" id="alpha-threshold" min="1" max="99" step="1" value="50" />
-            <input type="number" class="slider-num" id="alpha-threshold-num" min="1" max="99" step="1" value="50" title="type or arrow for fine changes" />
-            <span class="field-unit">% opacity</span>
-          </div>
+          <div class="pv-tools preview-controls">
+            <button type="button" id="preview-place" class="mini"
+              title="sit the preview in the page under Source instead of the scrolling rail">into the page</button>
+            <button type="button" id="preview-popout" class="mini" hidden
+              title="open the preview in its own always-on-top window">pop out</button>
+            <button type="button" id="preview-toggle" class="mini preview-toggle"
+              title="collapse the preview panel">hide</button>
           </div>
         </div>
-
-        <div class="subsection" id="build-section">
-          <div class="sub-head">build</div>
+        <div id="progress" class="progress idle" aria-hidden="true"><div id="progress-fill"></div></div>
+        <div id="preview-slot">
+          <div id="preview-wrap" title="click to load an image, or drag and drop or paste anywhere">
+            <canvas id="preview" width="128" height="128"></canvas>
+            <div id="grid-lines"></div>
+            <div id="preview-empty">
+              <span class="preview-empty-mark">+</span>
+              <span>choose a picture</span>
+            </div>
+          </div>
+        </div>
+        <div id="preview-away" hidden>
+          <span class="away-text">The preview is in its own window.</span>
+          <button type="button" id="preview-return">bring it back</button>
+        </div>
+        <p class="note" id="preview-hint">drag and drop or paste a picture anywhere on the page</p>
+        <div class="panel-utility preview-utility">
+          <div class="utility-row">
+            <button type="button" id="view-build" class="mini" disabled
+              title="the whole schematic block by block: real textures, heights, and the exact blocks these settings pick. Nothing downloads and nothing leaves the page">view the build</button>
+            <a class="mini jump" href="#export-panel">go to download</a>
+            <button type="button" id="reset-default" class="mini danger"
+              title="back to the starting loadout, palette, filters and settings. Your saved presets are kept">reset all settings</button>
+          </div>
+        </div>
+      </section>
+          </div>
+          <div class="col col-right" id="col-right">
+      <section id="settings-panel" aria-label="Üretim ayarları">
+        <h2>Generation <span class="dim" id="settings-meta"></span></h2>
+        <div class="subsection" id="dither-section">
+          <div class="sub-head">dithering</div>
           <div class="ctl">
             <span class="field-name">dither</span>
             <span class="ctl-body">
@@ -377,10 +399,48 @@
               </button>
               <div class="picker-drop dither-drop" id="dither-drop" role="listbox" hidden></div>
               </span>
-              <label title="rearranges blocks to look right on a map framed a few blocks away. Slow, and slightly worse up close">
-                <input type="checkbox" id="dbs-refine" />refine for display (slow)</label>
             </span>
           </div>
+        </div>
+        <div class="subsection" id="view-section" data-closed>
+          <div class="sub-head">viewing distance</div>
+<div class="ctl"><span class="field-name">optimize</span><span class="ctl-body"><label title="rearranges blocks to look right on a map framed a few blocks away. Slow, and slightly worse up close">
+                <input type="checkbox" id="dbs-refine" />refine for display (slow)</label></span></div>
+        </div>
+        <div class="subsection" id="color-section">
+          <div class="sub-head">color &amp; transparency</div>
+<p class="note" id="color-note">Brightness, contrast, saturation and white balance are under Image. Transparent areas of a picture are handled here.</p>        <div class="subsection" id="background-row" hidden>
+          <div class="sub-head">transparency</div>
+          <div class="ctl" title="transparent pixels place no blocks. The pad fit keeps this on, because padding is always transparent">
+            <label class="field-name" for="honor-alpha">transparent areas</label>
+            <span class="ctl-body">
+              <label><input type="checkbox" id="honor-alpha" checked /> leave them empty</label>
+            </span>
+          </div>
+          <div class="ctl" title="what goes where the picture is transparent, instead of leaving holes in the build">
+            <label class="field-name" for="bg-mode">fill</label>
+            <span class="ctl-body">
+              <select id="bg-mode">
+              <option value="off" selected>none</option>
+              <option value="smooth" title="the closest color a map can make, one block">flat color</option>
+              <option value="dithered" title="your exact color, dithered like the picture">dithered</option>
+            </select>
+              <input type="color" id="bg-color" value="#151515" aria-label="fill color" title="the color to fill with" />
+              <span class="note" id="bg-note"></span>
+            </span>
+          </div>
+          <div class="ctl-group" id="alpha-threshold-row" hidden>
+          <div class="ctl ctl-range" title="pixels less opaque than this count as transparent and place no blocks">
+            <label class="field-name" for="alpha-threshold">transparent below</label>
+            <input type="range" id="alpha-threshold" min="1" max="99" step="1" value="50" />
+            <input type="number" class="slider-num" id="alpha-threshold-num" min="1" max="99" step="1" value="50" title="type or arrow for fine changes" />
+            <span class="field-unit">% opacity</span>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div class="subsection" id="height-section">
+          <div class="sub-head">height</div>
           <div class="ctl" id="height-row">
             <label class="field-name" for="height-mode">height</label>
             <span class="ctl-body">
@@ -388,27 +448,22 @@
               <option value="stepped" selected>staircased (3D)</option>
               <option value="flat">flat (2D)</option>
             </select>
-            <label id="cliff-cap-label" title="biggest height jump between neighboring rows. Blank allows any jump for the lowest possible build; 1 gives classic gentle terraces. This limits single steps; max height below limits the whole build">
-              max step <input type="number" id="cliff-cap" value="" min="1" placeholder="any" /></label>
-            <label id="max-height-label" title="tallest the staircased build may stand, in blocks. Blank lets the picture staircase as tall as it wants. Lower is easier to build and recolors some blocks to fit; the note here reports what it costs">
-              max height <input type="number" id="max-height" value="" min="0" placeholder="any" /></label>
             </span>
           </div>
-          <div class="ctl" id="build-as-row" title="how the build is put together, which decides what max height measures and how the download is cut">
-            <label class="field-name" for="build-mode">build as</label>
-            <span class="ctl-body">
-              <select id="build-mode">
-              <option value="panels" selected title="one file per map. Every panel starts on the ground with its own reference row along its north edge, so you can build it anywhere. Max height is the tallest panel">panels</option>
-              <option value="continued" title="each panel starts where the one above it left off, so they stack into one build, all at the same y-level">continued</option>
-              <option value="one_piece" title="a single schematic with one reference row along the north edge">one piece</option>
-            </select>
-            </span>
-          </div>
-          <div class="ctl ctl-wide" id="max-height-note-row">
+        </div>
+        <div class="subsection" id="stair-section" data-closed>
+          <div class="sub-head">staircase</div>
+<div class="ctl"><span class="field-name">max step</span><span class="ctl-body"><label id="cliff-cap-label" title="biggest height jump between neighboring rows. Blank allows any jump for the lowest possible build; 1 gives classic gentle terraces. This limits single steps; max height below limits the whole build">
+              max step <input type="number" id="cliff-cap" value="" min="1" placeholder="any" /></label></span></div>
+        </div>
+        <div class="subsection" id="maxh-section" data-closed>
+          <div class="sub-head">max height</div>
+<div class="ctl"><span class="field-name">limit</span><span class="ctl-body"><label id="max-height-label" title="tallest the staircased build may stand, in blocks. Blank lets the picture staircase as tall as it wants. Lower is easier to build and recolors some blocks to fit; the note here reports what it costs">
+              max height <input type="number" id="max-height" value="" min="0" placeholder="any" /></label></span></div>          <div class="ctl ctl-wide" id="max-height-note-row">
             <span class="note" id="max-height-note"></span>
           </div>
         </div>
-        <div class="subsection" id="filler-section">
+                <div class="subsection" id="filler-section">
           <div class="sub-head" title="cheap blocks the build needs but the picture never shows, under blocks that need support and along the noobline">filler <span class="dim" id="filler-meta"></span></div>
           <div class="ctl" title="cheap blocks placed under the map because the block above physically needs them. How you place the map is up to you, so nothing is added for placement">
             <label class="field-name" for="support-mode">where</label>
@@ -433,139 +488,30 @@
           </div>
           <p class="note" id="filler-notice" hidden></p>
         </div>
-      </section>
-
-      <section id="preview-panel">
-        <h2>Preview
-          <span class="dim" id="preview-meta"></span>
-        </h2>
-        <div class="row preview-controls">
-          <span class="ctl-name">view</span>
-          <button type="button" id="preview-place" class="mini"
-            title="sit the preview in the page under Source instead of the scrolling rail">into the page</button>
-          <button type="button" id="preview-popout" class="mini" hidden
-            title="open the preview in its own always-on-top window">pop out</button>
-          <button type="button" id="preview-toggle" class="mini preview-toggle"
-            title="collapse the preview panel">hide</button>
-        </div>
-        <div class="row preview-controls preview-zoom">
-          <button type="button" id="zoom-out" class="mini" title="zoom out">−</button>
-          <button type="button" id="zoom-fit" class="mini" title="fit the whole map in the panel">fit</button>
-          <button type="button" id="zoom-in" class="mini" title="zoom in; the preview grows over the page and keeps following your scroll">+</button>
-          <label class="mini-label" title="map panel boundaries, named the way the download names files"><input type="checkbox" id="grid-overlay" /> grid</label>
-        </div>
-        <div id="preview-slot">
-          <div id="progress" class="progress idle" aria-hidden="true"><div id="progress-fill"></div></div>
-          <div id="preview-wrap" title="click to load an image, or drag and drop or paste anywhere">
-            <canvas id="preview" width="128" height="128"></canvas>
-            <div id="grid-lines"></div>
-            <div id="preview-empty">
-              <span class="preview-empty-mark">+</span>
-              <span>choose a picture</span>
-            </div>
-          </div>
-        </div>
-        <div id="preview-away" hidden>
-          <span class="away-text">The preview is in its own window.</span>
-          <button type="button" id="preview-return">bring it back</button>
-        </div>
-        <p class="note" id="preview-hint">drag and drop or paste a picture anywhere on the page</p>
-        <div class="panel-utility preview-utility">
-          <div class="utility-row">
-            <button type="button" id="view-build" class="mini" disabled
-              title="the whole schematic block by block: real textures, heights, and the exact blocks these settings pick. Nothing downloads and nothing leaves the page">view the build</button>
-            <a class="mini jump" href="#export-panel">go to download</a>
-          </div>
-          <div class="utility-row">
-            <button type="button" id="reset-default" class="mini danger"
-              title="back to the starting loadout, palette, filters and settings. Your saved presets are kept">reset all settings</button>
+        <div class="subsection" id="build-section" data-closed>
+          <div class="sub-head">construction</div>
+          <div class="ctl" id="build-as-row" title="how the build is put together, which decides what max height measures and how the download is cut">
+            <label class="field-name" for="build-mode">build as</label>
+            <span class="ctl-body">
+              <select id="build-mode">
+              <option value="panels" selected title="one file per map. Every panel starts on the ground with its own reference row along its north edge, so you can build it anywhere. Max height is the tallest panel">panels</option>
+              <option value="continued" title="each panel starts where the one above it left off, so they stack into one build, all at the same y-level">continued</option>
+              <option value="one_piece" title="a single schematic with one reference row along the north edge">one piece</option>
+            </select>
+            </span>
           </div>
         </div>
       </section>
-
-      <section id="loadout-panel">
-        <h2>Loadout <span class="dim" id="loadout-meta"></span></h2>
-        <div class="ctl-group">
-          <div class="ctl" title="a saved kit, your tools, the conditions you mine in, and the two filters that depend on what you carry">
-            <label class="field-name" for="loadout-preset">preset</label>
-            <span class="ctl-body">
-              <select id="loadout-preset"></select>
-              <button type="button" id="loadout-preset-save" class="mini"
-                title="save the current tools, conditions and tool-dependent filters under a name">save…</button>
-              <button type="button" id="loadout-preset-rename" class="mini">rename</button>
-              <button type="button" id="loadout-preset-delete" class="mini">delete</button>
-            </span>
           </div>
         </div>
+        <nav class="studio-dock" id="studio-dock" aria-label="Stüdyo bölümleri">
+          <button type="button" class="dock-btn" data-pane="left" aria-pressed="false">Görsel <span>Image</span></button>
+          <button type="button" class="dock-btn" data-pane="right" aria-pressed="false">Ayarlar <span>Settings</span></button>
+        </nav>
+      </div>
 
-        <div class="subsection" id="tools-section">
-          <div class="sub-head">your tools</div>
-          <div id="loadout"></div>
-          <button type="button" id="tool-add" class="mini">+ tool</button>
-        </div>
-
-        <div class="subsection" id="conditions-section">
-          <div class="sub-head">conditions</div>
-          <div class="ctl" title="beacon haste level, 0 for none. Each level is 20% faster">
-            <label class="field-name" for="haste">haste</label>
-            <span class="ctl-body">
-              <input type="number" id="haste" value="0" min="0" max="10" />
-              <span class="note" id="haste-note" hidden
-                title="a max-level beacon gives Haste 2. Higher levels exist with mods and servers, and are priced the same way">beacons stop at 2</span>
-            </span>
-          </div>
-          <div class="ctl">
-            <span class="field-name">mining</span>
-            <span class="ctl-body">
-              <label title="every block takes five times longer to break while you are not standing on solid ground"><input type="checkbox" id="flying" /> while flying</label>
-              <label title="vanilla pauses a quarter second after every break that is not instant. Tick this if you run the client mod that removes the pause, where your server allows it"><input type="checkbox" id="no-cooldown" /> with the no cooldown mod</label>
-            </span>
-          </div>
-        </div>
-
-        <div class="subsection" id="loadout-filters-section">
-          <div class="sub-head">filters that depend on your tools
-            <span class="chip-filter some-off" id="loadout-empty" hidden
-              title="these colors have no block left that your tools and filters allow, so they place nothing"></span>
-          </div>
-          <div id="loadout-filters"></div>
-        </div>
-      </section>
-
-      <section id="io-panel">
-        <h2>Import / export</h2>
-
-        <div class="subsection" id="import-section">
-          <div class="sub-head">import</div>
-          <div class="ctl ctl-wide">
-            <span class="ctl-body">
-            <button type="button" id="import-open" class="mini" title="a mapartcraft palette file, preset string or link, or a settings file exported here. Colors the palette leaves out are switched off">import a palette…</button>
-            <input type="file" id="import-file" accept=".txt,.json,text/plain,application/json" hidden />
-            <input type="text" id="import-paste" placeholder="or paste a mapartcraft preset or link" />
-            <button type="button" id="import-apply" class="mini">use it</button>
-            </span>
-          </div>
-        </div>
-
-        <div class="subsection" id="export-section">
-          <div class="sub-head">export</div>
-          <div class="ctl ctl-wide">
-            <span class="ctl-body">
-            <button type="button" id="share-link" class="mini"
-              title="a short link carrying just this palette: the colors you have on and the block you picked for each">copy a link to this palette</button>
-            <button type="button" id="export-settings" class="mini"
-              title="everything on this page as a file you can keep or send to someone">export my settings</button>
-            </span>
-          </div>
-          <div class="ctl ctl-wide" id="share-row" hidden>
-            <input type="text" id="share-out" readonly />
-          </div>
-        </div>
-
-        <p class="note" id="io-result" hidden></p>
-      </section>
-
-      <section id="solver-panel">
+      <div class="view" id="view-palette" data-view="palette" role="tabpanel" aria-labelledby="tab-palette" hidden>
+            <section id="solver-panel">
         <h2>Palette <span class="dim" id="palette-meta"></span></h2>
         <p class="note" id="palette-state" hidden></p>
         <p class="note">Every block offered for a color makes the exact same pixel,
@@ -573,15 +519,9 @@
           cheapest to break and get back with your tools. Click another block to
           override it, or <b>×</b> to drop the color.</p>
 
-        <div class="subsection" id="version-section">
+<div class="subsection" id="version-section">
           <div class="sub-head">game version</div>
-          <div class="ctl">
-            <label class="field-name" for="game-version">version</label>
-            <span class="ctl-body">
-              <select id="game-version"></select>
-              <span class="note" id="version-note"></span>
-            </span>
-          </div>
+          <p class="note" id="version-note"></p>
         </div>
 
         <div class="subsection" id="palette-presets-section">
@@ -639,11 +579,63 @@
             </select></label>
             </span>
           </div>
+          <div class="pal-search"><label class="field-name" for="palette-search">search</label><input type="search" id="palette-search" placeholder="color or block name" autocomplete="off" spellcheck="false" /><span class="note" id="palette-search-count" aria-live="polite"></span></div>
           <div id="palette"></div>
         </div>
       </section>
+      </div>
 
-      <section id="summary-panel">
+      <div class="view" id="view-tools" data-view="tools" role="tabpanel" aria-labelledby="tab-tools" hidden>
+        <div class="two">
+            <section id="loadout-panel">
+        <h2>Loadout <span class="dim" id="loadout-meta"></span></h2>
+        <div class="ctl-group">
+          <div class="ctl" title="a saved kit, your tools, the conditions you mine in, and the two filters that depend on what you carry">
+            <label class="field-name" for="loadout-preset">preset</label>
+            <span class="ctl-body">
+              <select id="loadout-preset"></select>
+              <button type="button" id="loadout-preset-save" class="mini"
+                title="save the current tools, conditions and tool-dependent filters under a name">save…</button>
+              <button type="button" id="loadout-preset-rename" class="mini">rename</button>
+              <button type="button" id="loadout-preset-delete" class="mini">delete</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="subsection" id="tools-section">
+          <div class="sub-head">your tools</div>
+          <div id="loadout"></div>
+          <button type="button" id="tool-add" class="mini">+ tool</button>
+        </div>
+
+        <div class="subsection" id="conditions-section">
+          <div class="sub-head">conditions</div>
+          <div class="ctl" title="beacon haste level, 0 for none. Each level is 20% faster">
+            <label class="field-name" for="haste">haste</label>
+            <span class="ctl-body">
+              <input type="number" id="haste" value="0" min="0" max="10" />
+              <span class="note" id="haste-note" hidden
+                title="a max-level beacon gives Haste 2. Higher levels exist with mods and servers, and are priced the same way">beacons stop at 2</span>
+            </span>
+          </div>
+          <div class="ctl">
+            <span class="field-name">mining</span>
+            <span class="ctl-body">
+              <label title="every block takes five times longer to break while you are not standing on solid ground"><input type="checkbox" id="flying" /> while flying</label>
+              <label title="vanilla pauses a quarter second after every break that is not instant. Tick this if you run the client mod that removes the pause, where your server allows it"><input type="checkbox" id="no-cooldown" /> with the no cooldown mod</label>
+            </span>
+          </div>
+        </div>
+
+        <div class="subsection" id="loadout-filters-section">
+          <div class="sub-head">filters that depend on your tools
+            <span class="chip-filter some-off" id="loadout-empty" hidden
+              title="these colors have no block left that your tools and filters allow, so they place nothing"></span>
+          </div>
+          <div id="loadout-filters"></div>
+        </div>
+      </section>
+            <section id="summary-panel">
         <h2>Summary
           <label class="mini-label" id="materials-basis-label" hidden>materials for
             <select id="materials-basis"></select>
@@ -651,8 +643,12 @@
         </h2>
         <div id="summary"></div>
       </section>
+        </div>
+      </div>
 
-      <section id="export-panel">
+      <div class="view" id="view-export" data-view="export" role="tabpanel" aria-labelledby="tab-export" hidden>
+        <div class="two two-export">
+            <section id="export-panel">
         <h2>Download</h2>
         <div class="ctl-group">
           <div class="ctl" title="used for the schematic and zip filenames. Map data files keep vanilla's map_&lt;id&gt;.dat, which the game requires">
@@ -703,20 +699,51 @@
           picture. That row along the north edge, the noobline, keeps the top row
           of the map the right shade.</p>
       </section>
+            <section id="io-panel">
+        <h2>Import / export</h2>
+
+        <div class="subsection" id="import-section">
+          <div class="sub-head">import</div>
+          <div class="ctl ctl-wide">
+            <span class="ctl-body">
+            <button type="button" id="import-open" class="mini" title="a mapartcraft palette file, preset string or link, or a settings file exported here. Colors the palette leaves out are switched off">import a palette…</button>
+            <input type="file" id="import-file" accept=".txt,.json,text/plain,application/json" hidden />
+            <input type="text" id="import-paste" placeholder="or paste a mapartcraft preset or link" />
+            <button type="button" id="import-apply" class="mini">use it</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="subsection" id="export-section">
+          <div class="sub-head">export</div>
+          <div class="ctl ctl-wide">
+            <span class="ctl-body">
+            <button type="button" id="share-link" class="mini"
+              title="a short link carrying just this palette: the colors you have on and the block you picked for each">copy a link to this palette</button>
+            <button type="button" id="export-settings" class="mini"
+              title="everything on this page as a file you can keep or send to someone">export my settings</button>
+            </span>
+          </div>
+          <div class="ctl ctl-wide" id="share-row" hidden>
+            <input type="text" id="share-out" readonly />
+          </div>
+        </div>
+
+        <p class="note" id="io-result" hidden></p>
+      </section>
+        </div>
+      </div>
     </main>
 
+    <div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+
     <footer>
-      <p><a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank"
+      <p>Map Art, OnePiece Team · Arachne tabanlı · <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank"
         rel="noopener noreferrer">GPL-3.0</a> · your image never leaves this browser ·
         your palette and presets are saved in this browser only</p>
       <p class="build">build <code id="build-id" title="click to copy, then quote it when reporting anything">…</code>
-        · <a id="build-source" href="https://github.com/b8b7lives/arachne">download this build's source</a></p>
-      <p class="build">questions and bug reports:
-        <a href="mailto:arachne@b8b7.live">arachne@b8b7.live</a></p>
-      <p class="build"><a href="faq/">FAQ</a>
-        · <a href="colors/">colors</a>
-        · <a href="fonts/">fonts</a>
-        · <a href="changelog/">release notes</a></p>
+        · <a id="build-source" href="./source/">download this build's source</a>
+        · <a href="NOTICE.txt">NOTICE</a> · <a href="LICENSE-GPL-3.0.txt">LICENSE</a></p>
       <p class="legal">Minecraft block textures and block data are the property of
         Mojang. This project is independent and has no connection to Mojang or
         Microsoft.</p>

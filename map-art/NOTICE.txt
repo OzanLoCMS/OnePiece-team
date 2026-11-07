@@ -6,7 +6,10 @@ Lisans: GNU General Public License v3.0 yalnızca (GPL-3.0-only)
 Kaynak: https://github.com/b8b7lives/arachne
 
 Bu klasördeki sürüm, yukarıdaki projenin sabit bir commit'inden derlenmiş ve
-yalnızca site yolunu (/arachne/ -> /map-art/) ve site adresini değiştiren bir
-yama ile uyarlanmıştır. Yama ve tam kaynak arşivi source/ klasöründedir.
+değiştirilmiştir (GPL-3.0 madde 5): site yolu (/arachne/ -> /map-art/) ve site adresi,
+service worker önbellek yalıtımı, ve OnePiece Team arayüz yeniden tasarımı (yerleşim,
+görünüm, gezinme; hesaplama çekirdeği ve algoritmalar değişmedi). Değişikliklerin
+tamamı source/ klasöründeki 0001, 0002 ve 0003 numaralı yamalardadır; tam kaynak
+arşivi de aynı klasördedir.
 Lisans metni: LICENSE-GPL-3.0.txt
 Arachne ile birlikte gelen yazı tiplerinin lisansları kendi klasörlerindedir.
